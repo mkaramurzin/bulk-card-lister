@@ -1,0 +1,35 @@
+{% extends "BulkLister/layout.html" %}
+{% load static }
+
+{% block body %} 
+    <section class="form-section">
+
+        <h3 class="title">Enter static listing info</h3>
+        
+        <label for="action">Action <span class="glyphicon glyphicon-info-sign"></span></label>
+        <select id="action" class="input-field">
+            <option>Add</option>
+        </select>
+
+        <label for="title">*Title</label>
+        <input id="title" type="text" class="input-field">
+
+        <label for="subtitle">Subtitle</label>
+        <input id="subtitle" type="text" class="input-field">
+
+        <label for="condition">Condition</label>
+        <select id="condition" class="input-field">
+            <option>New</option>
+            <option>Like New</option>
+            <option>Used</option>
+        </select>
+
+        <label for="photos">Photos <a href="https://imgbb.com/" target="_blank">(upload and copy url)</a></label>
+        <input id="photos" class="input-field" type="text">
+
+        
+
+        <!-- hidden -->
+        <input id="category" value="183454" class="input-field" hidden>
+    </section>
+{% endblock %}
