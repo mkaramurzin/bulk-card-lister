@@ -1,11 +1,13 @@
 {% extends "BulkLister/layout.html" %}
-{% load static }
+{% load static %}
 
 {% block body %} 
     <section class="form-section">
 
         <h3 class="title">Enter static listing info</h3>
         
+        <!-- Visible  -->
+
         <label for="action">Action <span class="glyphicon glyphicon-info-sign"></span></label>
         <select id="action" class="input-field">
             <option>Add</option>
@@ -19,6 +21,7 @@
 
         <label for="condition">Condition</label>
         <select id="condition" class="input-field">
+            <option></option>
             <option>New</option>
             <option>Like New</option>
             <option>Used</option>
@@ -27,9 +30,64 @@
         <label for="photos">Photos <a href="https://imgbb.com/" target="_blank">(upload and copy url)</a></label>
         <input id="photos" class="input-field" type="text">
 
-        
+        <label for="game">*Game</label>
+        <select id="game" class="input-field">
+            <option></option>
+            <option id="game-option">Pokemon TCG</option>
+            <option id="game-option">Magic: The Gathering</option>
+        </select>
+
+        <div id="MTG" style="display: none;">
+            <label id="mtg-ct-label" for="card-type">Card Type</label>
+            <select id="mtg-card-type" class="input-field">
+            <option></option>
+            <option class="ct-option">Creature</option>
+            <option class="ct-option">Instant</option>
+            <option class="ct-option">Sorcery</option>
+            <option class="ct-option">Enchantment</option>
+            <option class="ct-option">Artifact</option>
+            <option class="ct-option">Land</option>
+            <option class="ct-option">Planeswalker</option>
+            <option class="ct-option">Enter your own</option>
+        </select>
+
+        <label for="mtg-spec">Speciality</label>
+        <input id="mtg-spec" type="text">
+
+        <label for="mtg-stage">Stage</label>
+        <input id="mtg-stage" type="text">
+
+        <label for="mtg-set">Set</label>
+        <select id="mtg-set" class="input-field">
+            <option></option>
+            
+        </select>
+
+        </div>
+
+        <div id="pokemon" style="display: none;">
+            <label id="pokemon-ct-label" for="card-type">Card Type</label>
+            <select id="pokemon-card-type" class="input-field">
+            <option></option>
+            <option class="ct-option">Energy-Basic</option>
+            <option class="ct-option">Energy-Special</option>
+            <option class="ct-option">Pokémon</option>
+            <option class="ct-option">Pokémon Tool</option>
+            <option class="ct-option">Rocket's Secret Machine</option>
+            <option class="ct-option">Rocket's Secret Robot</option>
+            <option class="ct-option">Trainer</option>
+            <option class="ct-option">Trainer-Item</option>
+            <option class="ct-option">Trainer-Stadium</option>
+            <option class="ct-option">Trainer-Supporter</option>
+            <option class="ct-option">Enter your own</option>
+        </select>
+        </div>
 
         <!-- hidden -->
         <input id="category" value="183454" class="input-field" hidden>
     </section>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'BulkLister/index.js' %}"></script>
 {% endblock %}
