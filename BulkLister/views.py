@@ -78,6 +78,7 @@ def index(request):
 def input(request):
     data = json.loads(request.body)
     value = data.get("input", "")
-    print(value)
+    index = data.get("index", "")
+    print(value + index)
 
     return JsonResponse({"message": "Input read successfully"})

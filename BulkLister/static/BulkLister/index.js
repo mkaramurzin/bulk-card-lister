@@ -4,9 +4,14 @@ document.addEventListener('DOMContentLoaded', function() {
         let select = document.querySelector('#game')
         let value = select.options[select.selectedIndex].value;
         if(value === 'Pokemon TCG') {
-            Pokemon();
+            document.querySelector('#MTG').style.display = 'none';
+            document.querySelector('#pokemon').style.display = 'block';
         } else if(value === 'Magic: The Gathering') {
-            MTG();
+            document.querySelector('#pokemon').style.display = 'none';
+            document.querySelector('#MTG').style.display = 'block';
+        } else {
+            document.querySelector('#pokemon').style.display = 'none';
+            document.querySelector('#MTG').style.display = 'none';
         }
     })
 
@@ -29,23 +34,29 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#static-button').addEventListener('click', function() {
         StaticContinue();
     })
+
+    // Card is graded
+    document.querySelector("#graded").addEventListener('change', function() {
+        let select = document.querySelector('#graded')
+        let value = select.options[select.selectedIndex].value;
+        if(value === "Yes") {
+            document.querySelector('#graded-yes').style.display = 'block';
+        } else {
+            document.querySelector('#graded-yes').style.display = 'none';
+        }
+    })
+
+    // Card is autographed
+    document.querySelector('#autographed').addEventListener('change', function() {
+        let select = document.querySelector('#autographed')
+        let value = select.options[select.selectedIndex].value;
+        if(value === "Yes") {
+            document.querySelector('#autographed-yes').style.display = 'block';
+        } else {
+            document.querySelector('#autographed-yes').style.display = 'none';
+        }
+    })
 })
-
-function MTG() {
-    document.querySelector('#pokemon').style.display = 'none';
-    document.querySelector('#MTG').style.display = 'block';
-
-    // document.querySelector('#mtg-ct-label').style.display = 'block';
-    // document.querySelector('#mtg-card-type').style.display = 'block';
-}
-
-function Pokemon() {
-    document.querySelector('#MTG').style.display = 'none';
-    document.querySelector('#pokemon').style.display = 'block';
-
-    // document.querySelector('#pokemon-ct-label').style.display = 'block';
-    // document.querySelector('#pokemon-card-type').style.display = 'block';
-}
 
 function StaticContinue() {
     document.querySelectorAll('.input-field').forEach(field => {
@@ -53,6 +64,7 @@ function StaticContinue() {
             method: 'POST',
             body: JSON.stringify({
                 input: field.value,
+                index: field.dataset.id
             })
         })
         .then(response => response.json())

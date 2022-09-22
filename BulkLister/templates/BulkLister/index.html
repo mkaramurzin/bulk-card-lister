@@ -9,18 +9,18 @@
         <!-- Visible  -->
 
         <label for="action">Action <span class="glyphicon glyphicon-info-sign"></span></label>
-        <select id="action" class="input-field">
+        <select data-id="0" id="action" class="input-field">
             <option>Add</option>
         </select>
 
         <label for="title">*Title</label>
-        <input id="title" type="text" class="input-field">
+        <input data-id="4" id="title" type="text" class="input-field">
 
         <label for="subtitle">Subtitle</label>
-        <input id="subtitle" type="text" class="input-field">
+        <input data-id="5" id="subtitle" type="text" class="input-field">
 
         <label for="condition">Condition</label>
-        <select id="condition" class="input-field">
+        <select data-id="8" id="condition" class="input-field">
             <option></option>
             <option>New</option>
             <option>Like New</option>
@@ -28,10 +28,10 @@
         </select>
 
         <label for="photos">Photos <a href="https://imgbb.com/" target="_blank">(upload and copy url)</a></label>
-        <input id="photos" class="input-field" type="text">
+        <input data-id="49" id="photos" class="input-field" type="text">
 
         <label for="game">*Game</label>
-        <select id="game" class="input-field">
+        <select data-id="9" id="game" class="input-field">
             <option></option>
             <option id="game-option">Pokemon TCG</option>
             <option id="game-option">Magic: The Gathering</option>
@@ -39,105 +39,265 @@
 
         <div id="MTG" style="display: none;">
             <label id="mtg-ct-label" for="card-type">Card Type</label>
-            <select id="mtg-card-type" class="input-field">
-            <option></option>
-            <option class="ct-option">Creature</option>
-            <option class="ct-option">Instant</option>
-            <option class="ct-option">Sorcery</option>
-            <option class="ct-option">Enchantment</option>
-            <option class="ct-option">Artifact</option>
-            <option class="ct-option">Land</option>
-            <option class="ct-option">Planeswalker</option>
-            <option class="ct-option">Enter your own</option>
-        </select>
+            <select data-id="12" id="mtg-card-type" class="input-field">
+                <option></option>
+                <option class="ct-option">Creature</option>
+                <option class="ct-option">Instant</option>
+                <option class="ct-option">Sorcery</option>
+                <option class="ct-option">Enchantment</option>
+                <option class="ct-option">Artifact</option>
+                <option class="ct-option">Land</option>
+                <option class="ct-option">Planeswalker</option>
+                <option class="ct-option">Enter your own</option>
+            </select>
 
-        <label for="mtg-spec">Speciality</label>
-        <input id="mtg-spec" type="text" class="input-field">
+            <label for="mtg-spec">Speciality</label>
+            <input data-id="27" id="mtg-spec" type="text" class="input-field">
 
-        <label for="mtg-stage">Stage</label>
-        <input id="mtg-stage" type="text" class="input-field">
+            <label for="mtg-stage">Stage</label>
+            <input data-id="32" id="mtg-stage" type="text" class="input-field">
 
-        <label for="mtg-set">Set</label>
-        <select id="mtg-set" class="input-field">
-            <option></option>
-            <option>Dominaria United</option>
-            <option>Streets of New Capenna</option>
-            <option>Kamigawa: Neon Dynasty</option>
-            <option>Innistrad: Crimson Vow</option>
-            <option>Innistrad: Midnight Hunt</option>
-            <option>Enter your own</option>
-        </select>
+            <label for="mtg-set">Set</label>
+            <select data-id="15" id="mtg-set" class="input-field">
+                <option></option>
+                <option>Dominaria United</option>
+                <option>Streets of New Capenna</option>
+                <option>Kamigawa: Neon Dynasty</option>
+                <option>Innistrad: Crimson Vow</option>
+                <option>Innistrad: Midnight Hunt</option>
+                <option>Enter your own</option>
+            </select>
 
         </div>
 
         <div id="pokemon" style="display: none;">
             <label id="pokemon-ct-label" for="card-type">Card Type</label>
-            <select id="pokemon-card-type" class="input-field">
-            <option></option>
-            <option class="ct-option">Energy-Basic</option>
-            <option class="ct-option">Energy-Special</option>
-            <option class="ct-option">Pokémon</option>
-            <option class="ct-option">Pokémon Tool</option>
-            <option class="ct-option">Rocket's Secret Machine</option>
-            <option class="ct-option">Rocket's Secret Robot</option>
-            <option class="ct-option">Trainer</option>
-            <option class="ct-option">Trainer-Item</option>
-            <option class="ct-option">Trainer-Stadium</option>
-            <option class="ct-option">Trainer-Supporter</option>
-            <option class="ct-option">Enter your own</option>
-        </select>
+            <select data-id="12" id="pokemon-card-type" class="input-field">
+                <option></option>
+                <option class="ct-option">Energy-Basic</option>
+                <option class="ct-option">Energy-Special</option>
+                <option class="ct-option">Pokémon</option>
+                <option class="ct-option">Pokémon Tool</option>
+                <option class="ct-option">Rocket's Secret Machine</option>
+                <option class="ct-option">Rocket's Secret Robot</option>
+                <option class="ct-option">Trainer</option>
+                <option class="ct-option">Trainer-Item</option>
+                <option class="ct-option">Trainer-Stadium</option>
+                <option class="ct-option">Trainer-Supporter</option>
+                <option class="ct-option">Enter your own</option>
+            </select>
 
-        <label for="pokemon-spec">Speciality</label>
-        <select id="pokemon-spec" class="input-field">
-            <option></option>
-            <option>BREAK</option>
-            <option>EX</option>
-            <option>GX</option>
-            <option>LEGEND</option>
-            <option>Level Up</option>
-            <option>MEGA</option>
-            <option>PRIME</option>
-            <option>Restored</option>
-            <option>SP</option>
-            <option>TAG TEAM</option>
-            <option>V</option>
-            <option>VMAX</option>
-            <option>Enter your own</option>
-        </select>
+            <label for="pokemon-spec">Speciality</label>
+            <select data-id="27" id="pokemon-spec" class="input-field">
+                <option></option>
+                <option>BREAK</option>
+                <option>EX</option>
+                <option>GX</option>
+                <option>LEGEND</option>
+                <option>Level Up</option>
+                <option>MEGA</option>
+                <option>PRIME</option>
+                <option>Restored</option>
+                <option>SP</option>
+                <option>TAG TEAM</option>
+                <option>V</option>
+                <option>VMAX</option>
+                <option>Enter your own</option>
+            </select>
 
-        <label for="pokemon-stage">Stage</label>
-        <select id="pokemon-stage" class="input-field">
-            <option></option>
-            <option>Basic</option>
-            <option>Stage 1</option>
-            <option>Stage 2</option>
-            <option>Enter your own</option>
-        </select>
+            <label for="pokemon-stage">Stage</label>
+            <select data-id="32" id="pokemon-stage" class="input-field">
+                <option></option>
+                <option>Basic</option>
+                <option>Stage 1</option>
+                <option>Stage 2</option>
+                <option>Enter your own</option>
+            </select>
 
-        <label for="pokemon-set">Set</label>
-        <select id="pokemon-set" class="input-field">
-            <option></option>
-            <option>Hidden Fates</option>
-            <option>Brilliant Stars</option>
-            <option>Shining Fates</option>
-            <option>Team Rocket</option>
-            <option>Neo Genesis</option>
-            <option>Gym Heroes</option>
-            <option>Black & White</option>
-            <option>Dragon Vault</option>
-            <option>Darkness Ablaze</option>
-            <option>Champion's Path</option>
-            <option>Breakthrough</option>
-            <option>Forbidden Light</option>
-            <option>Generations</option>
-            <option>Primal Clash</option>
-            <option>Enter your own</option>
-        </select>
-
+            <label for="pokemon-set">Set</label>
+            <select data-id="15" id="pokemon-set" class="input-field">
+                <option></option>
+                <option>Hidden Fates</option>
+                <option>Brilliant Stars</option>
+                <option>Shining Fates</option>
+                <option>Team Rocket</option>
+                <option>Neo Genesis</option>
+                <option>Gym Heroes</option>
+                <option>Black & White</option>
+                <option>Dragon Vault</option>
+                <option>Darkness Ablaze</option>
+                <option>Champion's Path</option>
+                <option>Breakthrough</option>
+                <option>Forbidden Light</option>
+                <option>Generations</option>
+                <option>Primal Clash</option>
+                <option>Enter your own</option>
+            </select>
         </div>
 
+        <label for="graded">*Graded</label>
+        <select data-id="10" id="graded" class="input-field">
+            <option></option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+
+        <div id="graded-yes" style="display: none;">
+            <label for="grade">Grade</label>
+            <select data-id="17" id="grade" class="input-field">
+                <option></option>
+                <option>10</option>
+                <option>9.5</option>
+                <option>9</option>
+                <option>8.5</option>
+                <option>8</option>
+                <option>7.5</option>
+                <option>7</option>
+                <option>6.5</option>
+                <option>6</option>
+                <option>5.5</option>
+                <option>5</option>
+                <option>4.5</option>
+                <option>4</option>
+                <option>3.5</option>
+                <option>3</option>
+                <option>2.5</option>
+                <option>2</option>
+                <option>1.5</option>
+                <option>1</option>
+            </select>
+
+            <label for="grader">Professional Grader</label>
+            <input data-id="22" id="grader" class="input-field" type="text">
+
+            <label for="cert-number">Certification Number</label>
+            <input data-id="26" id="cert-number" class="input-field" type="text">
+        </div>
+
+        <label for="card-condition">Card Condition</label>
+        <select data-id="23" id="card-condition" class="input-field">
+            <option></option>
+            <option>Near Mint or Better</option>
+            <option>Lightly Played (Excellent)</option>
+            <option>Moderately Played (Very Good)</option>
+            <option>Heavily Played (Poor)</option>
+        </select>
+
+        <label for="character">Character(s)</label>
+        <input data-id="13" id="character" class="input-field" type="text">
+
+        <label for="features">Features</label>
+        <input data-id="14" id="features" class="input-field" type="text">
+
+        <label for="color">Attribute/MTG:Color</label>
+        <select data-id="16" id="color" class="input-field">
+            <option></option>
+            <option>Multi-Color</option>
+            <option>Earth</option>
+            <option>Red</option>
+            <option>Black</option>
+            <option>Blue</option>
+            <option>Colorless</option>
+            <option>Colorless Energy</option>
+            <option>Dark</option>
+            <option>Darkness</option>
+            <option>Divine</option>
+            <option>Dragon</option>
+            <option>Energy</option>
+            <option>Fairy</option>
+            <option>Fighting</option>
+            <option>Fire</option>
+            <option>Grass</option>
+            <option>Green</option>
+            <option>Light</option>
+            <option>Lightning</option>
+            <option>Metal</option>
+            <option>Psychic</option>
+            <option>Purple</option>
+            <option>Water</option>
+            <option>White</option>
+            <option>Wind</option>
+            <option>Yellow</option>
+            <option>Enter your own</option>
+        </select>
+
+        <label for="rarity">Rarity</label>
+        <select data-id="18" id="rarity" class="input-field">
+            <option></option>
+            <option>Common</option>
+            <option>Uncommon</option>
+            <option>Rare</option>
+            <option>Mythic</option>
+            <option>Enter your own</option>
+        </select>
+
+        <label for="finish">Finish</label>
+        <select data-id="19" id="finish" class="input-field">
+            <option></option>
+            <option>Foil</option>
+            <option>Regular</option>
+            <option>Reverse Holo</option>
+            <option>Enter your own</option>
+        </select>
+
+        <label for="manufacturer">Manufacturer</label>
+        <select data-id="20" id="manufacturer" class="input-field">
+            <option></option>
+            <option>Wizards of the Coast</option>
+            <option>Enter your own</option>
+        </select>
+
+        <label for="creature-type">Creature/Monster Type</label>
+        <select data-id="21" id="creature-type" class="input-field">
+            <option></option>
+            <option>Beast</option>
+            <option>Elf</option>
+            <option>Clerics</option>
+            <option>Zombie</option>
+            <option>Elemental</option>
+            <option>Spirits</option>
+            <option>Soldier</option>
+            <option>Warrior</option>
+            <option>Wizard</option>
+            <option>Human</option>
+            <option>Enter your own</option>
+        </select>
+
+        <label for="autographed">Autographed</label>
+        <select data-id="24" id="autographed" class="input-field">
+            <option></option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+
+        <div id="autographed-yes" style="display: none;">
+            <label for="signed">Signed By</label>
+            <input data-id="37" id="signed" class="input-field" type="text">
+
+            <label for="autograph-auth">Autograph Authentication</label>
+            <input data-id="38" id="Autograph Authentication" class="input-field" type="text">
+
+            <label for="auto-auth-number">Autograph Authentication Number</label>
+            <input data-id="47" id="auto-auth-number" class="input-field" type="text">
+
+            <label for="autograph-format">Autograph Format</label>
+            <select data-id="39" id="autograph-format" class="input-field">
+                <option></option>
+                <option>Cut</option>
+                <option>Hard Signed</option>
+                <option>Label or Sticker</option>
+                <option>Enter your own</option>
+            </select>
+        </div>
+
+        <label for="card-number">Card Number</label>
+        <input data-id="25" id="card-number" class="input-field" type="text">
+
+        <!-- Selling details -->
+
+
         <!-- hidden -->
-        <input id="category" value="183454" class="input-field" hidden>
+        <input data-id="2" id="category" value="183454" class="input-field" hidden>
 
         <button id="static-button" class="btn btn-primary">Continue</button>
     </section>
