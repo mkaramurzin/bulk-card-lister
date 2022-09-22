@@ -52,15 +52,20 @@
         </select>
 
         <label for="mtg-spec">Speciality</label>
-        <input id="mtg-spec" type="text">
+        <input id="mtg-spec" type="text" class="input-field">
 
         <label for="mtg-stage">Stage</label>
-        <input id="mtg-stage" type="text">
+        <input id="mtg-stage" type="text" class="input-field">
 
         <label for="mtg-set">Set</label>
         <select id="mtg-set" class="input-field">
             <option></option>
-            
+            <option>Dominaria United</option>
+            <option>Streets of New Capenna</option>
+            <option>Kamigawa: Neon Dynasty</option>
+            <option>Innistrad: Crimson Vow</option>
+            <option>Innistrad: Midnight Hunt</option>
+            <option>Enter your own</option>
         </select>
 
         </div>
@@ -81,10 +86,60 @@
             <option class="ct-option">Trainer-Supporter</option>
             <option class="ct-option">Enter your own</option>
         </select>
+
+        <label for="pokemon-spec">Speciality</label>
+        <select id="pokemon-spec" class="input-field">
+            <option></option>
+            <option>BREAK</option>
+            <option>EX</option>
+            <option>GX</option>
+            <option>LEGEND</option>
+            <option>Level Up</option>
+            <option>MEGA</option>
+            <option>PRIME</option>
+            <option>Restored</option>
+            <option>SP</option>
+            <option>TAG TEAM</option>
+            <option>V</option>
+            <option>VMAX</option>
+            <option>Enter your own</option>
+        </select>
+
+        <label for="pokemon-stage">Stage</label>
+        <select id="pokemon-stage" class="input-field">
+            <option></option>
+            <option>Basic</option>
+            <option>Stage 1</option>
+            <option>Stage 2</option>
+            <option>Enter your own</option>
+        </select>
+
+        <label for="pokemon-set">Set</label>
+        <select id="pokemon-set" class="input-field">
+            <option></option>
+            <option>Hidden Fates</option>
+            <option>Brilliant Stars</option>
+            <option>Shining Fates</option>
+            <option>Team Rocket</option>
+            <option>Neo Genesis</option>
+            <option>Gym Heroes</option>
+            <option>Black & White</option>
+            <option>Dragon Vault</option>
+            <option>Darkness Ablaze</option>
+            <option>Champion's Path</option>
+            <option>Breakthrough</option>
+            <option>Forbidden Light</option>
+            <option>Generations</option>
+            <option>Primal Clash</option>
+            <option>Enter your own</option>
+        </select>
+
         </div>
 
         <!-- hidden -->
         <input id="category" value="183454" class="input-field" hidden>
+
+        <button id="static-button" class="btn btn-primary">Continue</button>
     </section>
 {% endblock %}
 

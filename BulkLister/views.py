@@ -73,3 +73,11 @@ def index(request):
         return render(request, "BulkLister/static.html")
     else:
         return render(request, "BulkLister/index.html")
+
+@csrf_exempt
+def input(request):
+    data = json.loads(request.body)
+    value = data.get("input", "")
+    print(value)
+
+    return JsonResponse({"message": "Input read successfully"})
