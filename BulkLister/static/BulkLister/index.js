@@ -31,9 +31,10 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
     // Continue button clicked
-    document.querySelector('#static-button').addEventListener('click', function() {
+    document.querySelector('#static-button').onclick = function() {
         StaticContinue();
-    })
+        location.href = "www.google.com";
+    };
 
     // Card is graded
     document.querySelector("#graded").addEventListener('change', function() {
@@ -56,6 +57,28 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('#autographed-yes').style.display = 'none';
         }
     })
+
+    // additional selling details
+    document.querySelector('#additional-selling').addEventListener('change', function() {
+        let box = document.querySelector('#additional-selling');
+        if(box.checked) {
+            document.querySelector('#additional-selling-details').style.display = 'block';
+        } else {
+            document.querySelector('#additional-selling-details').style.display = 'none';
+        }
+    })
+
+    // paypal accepted
+    document.querySelector('#paypal-accepted').addEventListener('change', function() {
+        let select = document.querySelector('#paypal-accepted')
+        let value = select.options[select.selectedIndex].value;
+        if(value === "Yes") {
+            document.querySelector('#paypal-accepted-yes').style.display = 'block';
+        } else {
+            document.querySelector('#paypal-accepted-yes').style.display = 'none';
+        }
+    })
+
 })
 
 function StaticContinue() {

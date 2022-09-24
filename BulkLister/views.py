@@ -82,3 +82,7 @@ def input(request):
     print(value + index)
 
     return JsonResponse({"message": "Input read successfully"})
+
+@csrf_exempt
+def unique(request, data_id):
+    pass

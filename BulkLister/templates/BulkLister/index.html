@@ -295,6 +295,69 @@
 
         <!-- Selling details -->
 
+        <h4 class="title">Selling details</h5>
+        <label for="format">*Format</label>
+        <select data-id="52" id="format" class="input-field">
+            <option></option>
+            <option>Auction-style</option>
+            <option>Fixed price</option>
+        </select>
+
+        <label for="duration">*Duration</label>
+        <select data-id="53" id="duration" class="input-field">
+            <option></option>
+            <option>3 days</option>
+            <option>5 days</option>
+            <option>7 days</option>
+            <option>10 days</option>
+        </select>
+
+        <label for="starting-price">*Starting price</label>
+        <input data-id="54" id="starting-price" class="input-field" type="number">
+
+        <label for="buy-now-price">Buy It Now price</label>
+        <input data-id="55" id="buy-now-price" class="input-field" type="number">
+
+        <label for="quantity">Quantity</label>
+        <input data-id="56" id="quantity" class="input-field" type="number">
+
+        <label for="additional-selling">Additional selling details</label>
+        <input type="checkbox" id="additional-selling">
+        <div id="additional-selling-details" style="display: none;">
+            <label for="paypal-accepted">PayPal Accepted</label>
+            <select data-id="57" id="paypal-accepted" class="input-field">
+                <option></option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <div id="paypal-accepted-yes" style="display: none;">
+                <label for="paypal-email">PayPal email address</label>
+                <input data-id="58" id="paypal-email" class="input-field" type="text">
+            </div>
+
+            <label for="immediate-pay">Immediate Pay Required</label>
+            <select data-id="59" id="immediate-pay" class="input-field">
+                <option></option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <label for="payment-instructions">Payment Instructions</label>
+            <input data-id="60" id="payment-instructions" class="input-field" type="text">
+        </div>
+
+        <!-- Shipping details -->
+        <h4 class="title">Shipping details</h5>
+
+        <label for="location">*Item location</label>
+        <select data-id="61" id="location" class="input-field">
+            <option></option>
+            <option>Riverview, Florida, 33511, United States</option>
+            <option>Redmond, Washington, 98052, United States</option>
+        </select>
+
+        <!-- extra details -->
 
         <!-- hidden -->
         <input data-id="2" id="category" value="183454" class="input-field" hidden>
