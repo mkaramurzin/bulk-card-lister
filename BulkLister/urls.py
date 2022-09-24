@@ -10,5 +10,5 @@ urlpatterns = [
     path("unique/<int:id>", views.unique, name="unique"),
 
     # JSON paths
-    path("input", views.input, name="input")
+    path("input", views.input, name="input"),
 ]

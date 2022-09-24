@@ -12,7 +12,7 @@ import shutil
 import json
 from datetime import datetime
 
-from . models import User
+from . models import User, Field, ListingInfo, Session
 
 # Create your views here.
 
@@ -77,12 +77,40 @@ def index(request):
 @csrf_exempt
 def input(request):
     data = json.loads(request.body)
+    session_id = data.get("session_id", "")
     value = data.get("input", "")
     index = data.get("index", "")
-    print(value + index)
+    
+    new_field = Field.objects.create(index=index, value=value)
+    new_field.save()
 
-    return JsonResponse({"message": "Input read successfully"})
+    # print(session_id)
+    # print(new_field.value)
+    # print(new_field.index)
+
+    if session_id is "":
+        session = Session.objects.create()
+        session.save()
+    else:
+        session = Session.objects.get(id=session_id)
+        session.save()
+
+    session.static.add(new_field)
+    session.save()
+
+    return JsonResponse({"id": session.id})
 
 @csrf_exempt
-def unique(request, data_id):
-    pass
+def unique(request, id):
+    session = Session.objects.get(id=id)
+    data = session.static.all()
+    # data.filter(index=12, value="").delete() WORKS
+    for item in data:
+        # data.delete(item)
+        print("TEST")
+        print(str(item.index) + ":" + str(item.value))
+
+
+    return render(request, "BulkLister/unique.html", {
+        "fields": session.static.all()
+    })

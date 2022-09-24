@@ -30,10 +30,16 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     })
 
+    // Load button clicked
+    document.querySelector('#load-button').onclick = function() {
+        StaticContinue()
+    }
+
     // Continue button clicked
     document.querySelector('#static-button').onclick = function() {
-        StaticContinue();
-        location.href = "www.google.com";
+        let temp = document.querySelector('#session-id');
+        console.log(temp.value)
+        location.href = `unique/${temp.value}`;
     };
 
     // Card is graded
@@ -81,24 +87,49 @@ document.addEventListener('DOMContentLoaded', function() {
 
 })
 
-function StaticContinue() {
-    document.querySelectorAll('.input-field').forEach(field => {
-        fetch('/input', {
+async function StaticContinue() {
+    
+    document.querySelectorAll('.input-field').forEach(async field => {
+        // const sleep = (milliseconds) => {
+        //     return new Promise(resolve => setTimeout(resolve, milliseconds))
+        // }
+        // fetch('/input', {
+        //     method: 'POST',
+        //     body: JSON.stringify({
+        //         input: field.value,
+        //         index: field.dataset.id,
+        //         session_id: document.querySelector('#session-id').value
+        //     })
+        // })
+        // await sleep(1000)
+        // .then(response => response.json())
+        // .then(result => {
+        //     // console.log(result.id)
+            // if("error" in result) {
+            //     // error
+            //     alert(result['error'])
+            // } else {
+            //     document.querySelector('#session-id').value = result.id;
+            // }
+        // })
+        // .catch(error => {
+        //     console.log(error);
+        // });
+        const response = await fetch('/input', {
             method: 'POST',
             body: JSON.stringify({
                 input: field.value,
-                index: field.dataset.id
+                index: field.dataset.id,
+                session_id: document.querySelector('#session-id').value
             })
         })
-        .then(response => response.json())
-        .then(result => {
-            if("error" in result) {
-                // error
-                alert(result['error'])
-            }
-        })
-        .catch(error => {
-            console.log(error);
-        });
+        const json = await response.json();
+        console.log(json);
+        if("error" in json) {
+            // error
+            alert(json['error'])
+        } else {
+            document.querySelector('#session-id').value = json.id;
+        }
     })
 }

@@ -1,5 +1,17 @@
 {% extends "BulkLister/layout.html" %}
+{% load static %}
 
 {% block body %}
-    <h1>TEST</h1>
+    {% for field in fields %}
+        {% if field.index == 0 %}
+            <label for="action">Action <span class="glyphicon glyphicon-info-sign"></span></label>
+            <select data-id="0" id="action" class="input-field">
+                <option>{{ field.value }}</option>
+                <option>Add</option>
+            </select>
+        {% elif field.index == 4 %}
+            <label for="title">*Title</label>
+            <input data-id="4" id="title" type="text" class="input-field" value="{{ field.value }}">
+        {% endif %}
+    {% endfor %}
 {% endblock %}
