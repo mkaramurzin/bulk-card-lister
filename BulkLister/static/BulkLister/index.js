@@ -74,6 +74,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     })
 
+    // additional options
+    document.querySelector('#additional-options-checkbox').addEventListener('change', function() {
+        let box = document.querySelector('#additional-options-checkbox');
+        if(box.checked) {
+            document.querySelector('#additional-options').style.display = 'block';
+        } else {
+            document.querySelector('#additional-options').style.display = 'none';
+        }
+    })
+
     // paypal accepted
     document.querySelector('#paypal-accepted').addEventListener('change', function() {
         let select = document.querySelector('#paypal-accepted')
@@ -84,6 +94,35 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('#paypal-accepted-yes').style.display = 'none';
         }
     })
+
+
+
+    // next listing
+    document.querySelector('#next').onclick = function() {
+        alert("TEST")
+    }
+
+    // finish
+    document.querySelector('#finish').onclick = function() {
+        alert("TEST")
+        document.querySelectorAll('.input-field').forEach(field => {
+            fetch('/finish', {
+                method: 'POST',
+                body: JSON.stringify({
+                    input: field.value,
+                    index: field.dataset.id,
+                    listing_id: document.querySelector('#listing').value,
+                    session_id: document.querySelector('#session').value
+                })
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log(result)
+            })
+        })
+
+        location.href = 'test';
+    }
 
 })
 

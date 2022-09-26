@@ -8,7 +8,9 @@ urlpatterns = [
     path("logout", views.logout_view, name="logout"),
     path("register", views.register, name="register"),
     path("unique/<int:id>", views.unique, name="unique"),
+    path("test", views.test, name="test"),
 
     # JSON paths
     path("input", views.input, name="input"),
+    path("finish", views.finish, name="finish")
 ]

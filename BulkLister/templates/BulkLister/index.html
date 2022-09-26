@@ -8,7 +8,7 @@
         
         <!-- Visible  -->
 
-        <label for="action">Action <span class="glyphicon glyphicon-info-sign"></span></label>
+        <label for="action">*Action <span class="glyphicon glyphicon-info-sign"></span></label>
         <select data-id="0" id="action" class="input-field">
             <option>Add</option>
         </select>
@@ -19,7 +19,7 @@
         <label for="subtitle">Subtitle</label>
         <input data-id="5" id="subtitle" type="text" class="input-field">
 
-        <label for="condition">Condition</label>
+        <label for="condition">*Condition</label>
         <select data-id="8" id="condition" class="input-field">
             <option></option>
             <option>New</option>
@@ -38,7 +38,7 @@
         </select>
 
         <div id="MTG" style="display: none;">
-            <label id="mtg-ct-label" for="card-type">Card Type</label>
+            <label id="mtg-ct-label" for="card-type">*Card Type</label>
             <select data-id="12" id="mtg-card-type" class="input-field">
                 <option></option>
                 <option class="ct-option">Creature</option>
@@ -57,7 +57,7 @@
             <label for="mtg-stage">Stage</label>
             <input data-id="32" id="mtg-stage" type="text" class="input-field">
 
-            <label for="mtg-set">Set</label>
+            <label for="mtg-set">*Set</label>
             <select data-id="15" id="mtg-set" class="input-field">
                 <option></option>
                 <option>Dominaria United</option>
@@ -71,7 +71,7 @@
         </div>
 
         <div id="pokemon" style="display: none;">
-            <label id="pokemon-ct-label" for="card-type">Card Type</label>
+            <label id="pokemon-ct-label" for="card-type">*Card Type</label>
             <select data-id="12" id="pokemon-card-type" class="input-field">
                 <option></option>
                 <option class="ct-option">Energy-Basic</option>
@@ -114,7 +114,7 @@
                 <option>Enter your own</option>
             </select>
 
-            <label for="pokemon-set">Set</label>
+            <label for="pokemon-set">*Set</label>
             <select data-id="15" id="pokemon-set" class="input-field">
                 <option></option>
                 <option>Hidden Fates</option>
@@ -183,13 +183,18 @@
             <option>Heavily Played (Poor)</option>
         </select>
 
-        <label for="character">Character(s)</label>
+        <label for="card-name">*Card name</label>
+        <input data-id="11" id="card-name" class="input field" type="text">
+
+
+
+        <label for="character">*Character</label>
         <input data-id="13" id="character" class="input-field" type="text">
 
-        <label for="features">Features</label>
+        <label for="features">*Features</label>
         <input data-id="14" id="features" class="input-field" type="text">
 
-        <label for="color">Attribute/MTG:Color</label>
+        <label for="color">*Attribute/MTG:Color</label>
         <select data-id="16" id="color" class="input-field">
             <option></option>
             <option>Multi-Color</option>
@@ -263,33 +268,6 @@
             <option>Enter your own</option>
         </select>
 
-        <label for="autographed">Autographed</label>
-        <select data-id="24" id="autographed" class="input-field">
-            <option></option>
-            <option>Yes</option>
-            <option>No</option>
-        </select>
-
-        <div id="autographed-yes" style="display: none;">
-            <label for="signed">Signed By</label>
-            <input data-id="37" id="signed" class="input-field" type="text">
-
-            <label for="autograph-auth">Autograph Authentication</label>
-            <input data-id="38" id="Autograph Authentication" class="input-field" type="text">
-
-            <label for="auto-auth-number">Autograph Authentication Number</label>
-            <input data-id="47" id="auto-auth-number" class="input-field" type="text">
-
-            <label for="autograph-format">Autograph Format</label>
-            <select data-id="39" id="autograph-format" class="input-field">
-                <option></option>
-                <option>Cut</option>
-                <option>Hard Signed</option>
-                <option>Label or Sticker</option>
-                <option>Enter your own</option>
-            </select>
-        </div>
-
         <label for="card-number">Card Number</label>
         <input data-id="25" id="card-number" class="input-field" type="text">
 
@@ -321,8 +299,9 @@
         <label for="quantity">Quantity</label>
         <input data-id="56" id="quantity" class="input-field" type="number">
 
-        <label for="additional-selling">Additional selling details</label>
-        <input type="checkbox" id="additional-selling">
+        <label for="additional-selling">Additional selling details
+            <input type="checkbox" id="additional-selling">
+        </label>
         <div id="additional-selling-details" style="display: none;">
             <label for="paypal-accepted">PayPal Accepted</label>
             <select data-id="57" id="paypal-accepted" class="input-field">
@@ -359,6 +338,51 @@
         </select>
 
         <!-- extra details -->
+
+        <label for="additional-options-checkbox">Show additional options
+            <input type="checkbox" id="additional-options-checkbox">
+        </label>
+        <div id="additional-options" style="display: none;">
+
+            <label for="custom-label">Custom Label</label>
+            <input data-id="1" id="custom-label" class="input-field" type="text">
+
+            <label for="store-categoty">Store Category</label>
+            <input data-id="3" id="store-category" class="input-field" type="text">
+
+            <label for="relationship">Store Category</label>
+            <input data-id="6" id="relationship" class="input-field" type="text">
+
+            <label for="relationship-details">Store Category</label>
+            <input data-id="7" id="relationship-details" class="input-field" type="text">
+
+            <label for="autographed">Autographed</label>
+            <select data-id="24" id="autographed" class="input-field">
+                <option></option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <div id="autographed-yes" style="display: none;">
+                <label for="signed">Signed By</label>
+                <input data-id="37" id="signed" class="input-field" type="text">
+
+                <label for="autograph-auth">Autograph Authentication</label>
+                <input data-id="38" id="Autograph Authentication" class="input-field" type="text">
+
+                <label for="auto-auth-number">Autograph Authentication Number</label>
+                <input data-id="47" id="auto-auth-number" class="input-field" type="text">
+
+                <label for="autograph-format">Autograph Format</label>
+                <select data-id="39" id="autograph-format" class="input-field">
+                    <option></option>
+                    <option>Cut</option>
+                    <option>Hard Signed</option>
+                    <option>Label or Sticker</option>
+                    <option>Enter your own</option>
+                </select>
+            </div>
+        </div>
 
         <!-- hidden -->
         <input data-id="2" id="category" value="183454" class="input-field" hidden>

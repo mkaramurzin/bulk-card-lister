@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block body %}
+    <section class="form-section">
     {% for field in fields %}
         {% if field.index == 0 %}
             <label for="action">Action <span class="glyphicon glyphicon-info-sign"></span></label>
@@ -9,9 +10,28 @@
                 <option>{{ field.value }}</option>
                 <option>Add</option>
             </select>
-        {% elif field.index == 4 %}
+        {% endif %}
+    {% endfor %}
+    {% for field in fields %}
+        {% if field.index == 4 %}
             <label for="title">*Title</label>
             <input data-id="4" id="title" type="text" class="input-field" value="{{ field.value }}">
         {% endif %}
     {% endfor %}
+    {% for field in fields %}
+        {% if field.index == }
+    
+
+    <!-- Hidden -->
+    <input id="session-id" value="{{ session }}" hidden>
+    <input id="listing-id" value="{{ listing }}" hidden>
+
+    <button id="next" class="btn btn-secondary">Next Entry</button>
+    <button id="finish" class="btn btn-primary">Finish</button>
+
+    </section>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'BulkLister/index.js' %}"></script>
 {% endblock %}

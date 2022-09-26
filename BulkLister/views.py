@@ -81,7 +81,7 @@ def input(request):
     value = data.get("input", "")
     index = data.get("index", "")
     
-    new_field = Field.objects.create(index=index, value=value)
+    new_field = Field(index=index, value=value)
     new_field.save()
 
     # print(session_id)
@@ -89,7 +89,7 @@ def input(request):
     # print(new_field.index)
 
     if session_id is "":
-        session = Session.objects.create()
+        session = Session()
         session.save()
     else:
         session = Session.objects.get(id=session_id)
@@ -110,7 +110,38 @@ def unique(request, id):
         print("TEST")
         print(str(item.index) + ":" + str(item.value))
 
+    new_listing = ListingInfo()
+    new_listing.save()
+
+    session.listings.add(new_listing)
 
     return render(request, "BulkLister/unique.html", {
-        "fields": session.static.all()
+        "fields": session.static.all(),
+        "session": session.id,
+        "listing": new_listing.id
     })
+
+@csrf_exempt
+def finish(request):
+    data = json.loads(request.body)
+    session_id = data.get("session_id", "")
+    listing_id = data.get("listing_id", "")
+    value = data.get("input", "")
+    index = data.get("index", "")
+    print("TEST")
+    print(str(index) + ":" + str(value))
+
+    session = Session.objects.get(id=session_id)
+    listing = ListingInfo.objects.get(id=listing_id)
+
+    new_field = Field(index=index, value=value)
+    new_field.save()
+
+    listing.listing.add(new_field)
+
+    return JsonResponse({"message":"success"})
+
+
+@csrf_exempt
+def test(request):
+    return render(request, "BulkLister/test.html")
