@@ -19,19 +19,72 @@
         {% endif %}
     {% endfor %}
     {% for field in fields %}
-        {% if field.index == }
+        {% if field.index == 10 %}
+        <label for="graded">*Graded</label>
+        <select data-id="10" id="graded" class="input-field">
+            <option>{{ field.value }}</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+
+        {% if field.value == "Yes" %}
+        <div id="graded-yes" style="display: block;">
+        {% else %}
+        <div id="graded-yes" style="display: none;">
+        {% endif %}
+            <label for="grade">Grade</label>
+            <select data-id="17" id="grade" class="input-field">
+                {% for f in fields %}
+                    {% if f.index == 17 %}
+                    <option>{{ f.value }}</option>
+                    {% endif %}
+                {% endfor %}
+                <option>10</option>
+                <option>9.5</option>
+                <option>9</option>
+                <option>8.5</option>
+                <option>8</option>
+                <option>7.5</option>
+                <option>7</option>
+                <option>6.5</option>
+                <option>6</option>
+                <option>5.5</option>
+                <option>5</option>
+                <option>4.5</option>
+                <option>4</option>
+                <option>3.5</option>
+                <option>3</option>
+                <option>2.5</option>
+                <option>2</option>
+                <option>1.5</option>
+                <option>1</option>
+            </select>
+
+            <label for="grader">Professional Grader</label>
+            <input data-id="22" id="grader" class="input-field" type="text">
+
+            <label for="cert-number">Certification Number</label>
+            <input data-id="26" id="cert-number" class="input-field" type="text">
+        </div>
+        {% endif %}
+    {% endfor %}
     
 
     <!-- Hidden -->
-    <input id="session-id" value="{{ session }}" hidden>
-    <input id="listing-id" value="{{ listing }}" hidden>
+    <div style="display: none;">
+        <input id="session-id" value="{{ session }}">
+    </div>
 
-    <button id="next" class="btn btn-secondary">Next Entry</button>
-    <button id="finish" class="btn btn-primary">Finish</button>
+    <a href="{% url 'unique' id=session %}">
+        <button id="next" class="btn btn-secondary">Next Listing</button>
+    </a>
+    <a href="{% url 'test' %}">
+        <button id="finish" class="btn btn-primary">Finish</button>
+    </a>
 
     </section>
 {% endblock %}
 
 {% block script %}
-    <script src="{% static 'BulkLister/index.js' %}"></script>
+    <script src="{% static 'BulkLister/test.js' %}"></script>
 {% endblock %}

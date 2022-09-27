@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector("#graded").addEventListener('change', function() {
+        let select = document.querySelector('#graded')
+        let value = select.options[select.selectedIndex].value;
+        if(value === "Yes") {
+            document.querySelector('#graded-yes').style.display = 'block';
+        } else {
+            document.querySelector('#graded-yes').style.display = 'none';
+        }
+    })
     // game option selection
     document.querySelector('#game').addEventListener('change', function() {
         let select = document.querySelector('#game')
@@ -30,16 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     })
 
-    // Load button clicked
-    document.querySelector('#load-button').onclick = function() {
-        StaticContinue()
-    }
-
     // Continue button clicked
     document.querySelector('#static-button').onclick = function() {
-        let temp = document.querySelector('#session-id');
-        console.log(temp.value)
-        location.href = `unique/${temp.value}`;
+        StaticContinue()
     };
 
     // Card is graded
@@ -124,51 +126,88 @@ document.addEventListener('DOMContentLoaded', function() {
         location.href = 'test';
     }
 
-})
-
-async function StaticContinue() {
-    
-    document.querySelectorAll('.input-field').forEach(async field => {
-        // const sleep = (milliseconds) => {
-        //     return new Promise(resolve => setTimeout(resolve, milliseconds))
-        // }
-        // fetch('/input', {
-        //     method: 'POST',
-        //     body: JSON.stringify({
-        //         input: field.value,
-        //         index: field.dataset.id,
-        //         session_id: document.querySelector('#session-id').value
-        //     })
-        // })
-        // await sleep(1000)
-        // .then(response => response.json())
-        // .then(result => {
-        //     // console.log(result.id)
-            // if("error" in result) {
-            //     // error
-            //     alert(result['error'])
-            // } else {
-            //     document.querySelector('#session-id').value = result.id;
-            // }
-        // })
-        // .catch(error => {
-        //     console.log(error);
-        // });
-        const response = await fetch('/input', {
-            method: 'POST',
-            body: JSON.stringify({
-                input: field.value,
-                index: field.dataset.id,
-                session_id: document.querySelector('#session-id').value
+    // info icons
+    document.querySelectorAll('.glyphicon glyphicon-info-sign').forEach(icon => {
+        if(icon.id === 'i-game') {
+            icon.addEventListener('click', function() {
+                alert("Name of the game the product belongs to or is compatible with");
             })
-        })
-        const json = await response.json();
-        console.log(json);
-        if("error" in json) {
-            // error
-            alert(json['error'])
-        } else {
-            document.querySelector('#session-id').value = json.id;
         }
     })
+
+})
+
+// async function StaticContinue() {
+    
+//     document.querySelectorAll('.input-field').forEach(async field => {
+//         // const sleep = (milliseconds) => {
+//         //     return new Promise(resolve => setTimeout(resolve, milliseconds))
+//         // }
+//         // fetch('/input', {
+//         //     method: 'POST',
+//         //     body: JSON.stringify({
+//         //         input: field.value,
+//         //         index: field.dataset.id,
+//         //         session_id: document.querySelector('#session-id').value
+//         //     })
+//         // })
+//         // await sleep(1000)
+//         // .then(response => response.json())
+//         // .then(result => {
+//         //     // console.log(result.id)
+//             // if("error" in result) {
+//             //     // error
+//             //     alert(result['error'])
+//             // } else {
+//             //     document.querySelector('#session-id').value = result.id;
+//             // }
+//         // })
+//         // .catch(error => {
+//         //     console.log(error);
+//         // });
+//         const response = await fetch('/input', {
+//             method: 'POST',
+//             body: JSON.stringify({
+//                 input: field.value,
+//                 index: field.dataset.id,
+//                 session_id: document.querySelector('#session-id').value
+//             })
+//         })
+//         const json = await response.json();
+//         console.log(json);
+//         if("error" in json) {
+//             // error
+//             alert(json['error'])
+//         } else {
+//             document.querySelector('#session-id').value = json.id;
+//         }
+//     })
+// }
+
+function StaticContinue() {
+    var array = []
+    document.querySelectorAll('.input-field').forEach(field => {
+        let index = field.dataset.id;
+        let val = field.value;
+        var item = [index, val]
+        array.push(item)
+    })
+    console.log(array)
+    fetch('input', {
+        method: 'POST',
+        body: JSON.stringify({
+            array: array
+        })
+    })
+    .then(response => response.json())
+    .then(result => {
+        console.log(result) 
+        document.querySelector('#session-id').value = result.id;
+        let id = document.querySelector('#session-id').value;
+        console.log(id)
+        location.href = `unique/${id}`;
+    })
+    .catch(error => {
+        console.log(error);
+    });
 }

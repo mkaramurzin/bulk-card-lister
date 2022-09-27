@@ -8,7 +8,7 @@
         
         <!-- Visible  -->
 
-        <label for="action">*Action <span class="glyphicon glyphicon-info-sign"></span></label>
+        <label for="action">*Action</label>
         <select data-id="0" id="action" class="input-field">
             <option>Add</option>
         </select>
@@ -30,7 +30,7 @@
         <label for="photos">Photos <a href="https://imgbb.com/" target="_blank">(upload and copy url)</a></label>
         <input data-id="49" id="photos" class="input-field" type="text">
 
-        <label for="game">*Game</label>
+        <label for="game">*Game<span id="i-game" class="glyphicon glyphicon-info-sign"></span></label>
         <select data-id="9" id="game" class="input-field">
             <option></option>
             <option id="game-option">Pokemon TCG</option>
@@ -135,45 +135,6 @@
             </select>
         </div>
 
-        <label for="graded">*Graded</label>
-        <select data-id="10" id="graded" class="input-field">
-            <option></option>
-            <option>Yes</option>
-            <option>No</option>
-        </select>
-
-        <div id="graded-yes" style="display: none;">
-            <label for="grade">Grade</label>
-            <select data-id="17" id="grade" class="input-field">
-                <option></option>
-                <option>10</option>
-                <option>9.5</option>
-                <option>9</option>
-                <option>8.5</option>
-                <option>8</option>
-                <option>7.5</option>
-                <option>7</option>
-                <option>6.5</option>
-                <option>6</option>
-                <option>5.5</option>
-                <option>5</option>
-                <option>4.5</option>
-                <option>4</option>
-                <option>3.5</option>
-                <option>3</option>
-                <option>2.5</option>
-                <option>2</option>
-                <option>1.5</option>
-                <option>1</option>
-            </select>
-
-            <label for="grader">Professional Grader</label>
-            <input data-id="22" id="grader" class="input-field" type="text">
-
-            <label for="cert-number">Certification Number</label>
-            <input data-id="26" id="cert-number" class="input-field" type="text">
-        </div>
-
         <label for="card-condition">Card Condition</label>
         <select data-id="23" id="card-condition" class="input-field">
             <option></option>
@@ -184,15 +145,10 @@
         </select>
 
         <label for="card-name">*Card name</label>
-        <input data-id="11" id="card-name" class="input field" type="text">
-
-
+        <input data-id="11" id="card-name" class="input-field" type="text">
 
         <label for="character">*Character</label>
         <input data-id="13" id="character" class="input-field" type="text">
-
-        <label for="features">*Features</label>
-        <input data-id="14" id="features" class="input-field" type="text">
 
         <label for="color">*Attribute/MTG:Color</label>
         <select data-id="16" id="color" class="input-field">
@@ -226,32 +182,6 @@
             <option>Enter your own</option>
         </select>
 
-        <label for="rarity">Rarity</label>
-        <select data-id="18" id="rarity" class="input-field">
-            <option></option>
-            <option>Common</option>
-            <option>Uncommon</option>
-            <option>Rare</option>
-            <option>Mythic</option>
-            <option>Enter your own</option>
-        </select>
-
-        <label for="finish">Finish</label>
-        <select data-id="19" id="finish" class="input-field">
-            <option></option>
-            <option>Foil</option>
-            <option>Regular</option>
-            <option>Reverse Holo</option>
-            <option>Enter your own</option>
-        </select>
-
-        <label for="manufacturer">Manufacturer</label>
-        <select data-id="20" id="manufacturer" class="input-field">
-            <option></option>
-            <option>Wizards of the Coast</option>
-            <option>Enter your own</option>
-        </select>
-
         <label for="creature-type">Creature/Monster Type</label>
         <select data-id="21" id="creature-type" class="input-field">
             <option></option>
@@ -267,9 +197,6 @@
             <option>Human</option>
             <option>Enter your own</option>
         </select>
-
-        <label for="card-number">Card Number</label>
-        <input data-id="25" id="card-number" class="input-field" type="text">
 
         <!-- Selling details -->
 
@@ -344,6 +271,77 @@
         </label>
         <div id="additional-options" style="display: none;">
 
+            <label for="features">Features</label>
+            <input data-id="14" id="features" class="input-field" type="text">
+
+            <label for="card-number">Card Number</label>
+            <input data-id="25" id="card-number" class="input-field" type="text">
+
+            <label for="rarity">Rarity</label>
+            <select data-id="18" id="rarity" class="input-field">
+                <option></option>
+                <option>Common</option>
+                <option>Uncommon</option>
+                <option>Rare</option>
+                <option>Mythic</option>
+                <option>Enter your own</option>
+            </select>
+
+            <label for="finish">Finish</label>
+            <select data-id="19" id="finish" class="input-field">
+                <option></option>
+                <option>Foil</option>
+                <option>Regular</option>
+                <option>Reverse Holo</option>
+                <option>Enter your own</option>
+            </select>
+
+            <label for="manufacturer">Manufacturer</label>
+            <select data-id="20" id="manufacturer" class="input-field">
+                <option></option>
+                <option>Wizards of the Coast</option>
+                <option>Enter your own</option>
+            </select>
+
+            <label for="graded">*Graded</label>
+            <select data-id="10" id="graded" class="input-field">
+                <option></option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <div id="graded-yes" style="display: none;">
+                <label for="grade">Grade</label>
+                <select data-id="17" id="grade" class="input-field">
+                    <option></option>
+                    <option>10</option>
+                    <option>9.5</option>
+                    <option>9</option>
+                    <option>8.5</option>
+                    <option>8</option>
+                    <option>7.5</option>
+                    <option>7</option>
+                    <option>6.5</option>
+                    <option>6</option>
+                    <option>5.5</option>
+                    <option>5</option>
+                    <option>4.5</option>
+                    <option>4</option>
+                    <option>3.5</option>
+                    <option>3</option>
+                    <option>2.5</option>
+                    <option>2</option>
+                    <option>1.5</option>
+                    <option>1</option>
+                </select>
+
+                <label for="grader">Professional Grader</label>
+                <input data-id="22" id="grader" class="input-field" type="text">
+
+                <label for="cert-number">Certification Number</label>
+                <input data-id="26" id="cert-number" class="input-field" type="text">
+            </div>
+
             <label for="custom-label">Custom Label</label>
             <input data-id="1" id="custom-label" class="input-field" type="text">
 
@@ -381,15 +379,59 @@
                     <option>Label or Sticker</option>
                     <option>Enter your own</option>
                 </select>
+
+                <label for="age-level">Age Level</label>
+                <select data-id="28" id="age-level" class="input-field">
+                    <option></option>
+                    <option>4+</option>
+                    <option>6+</option>
+                    <option>8+</option>
+                    <option>10+</option>
+                    <option>13+</option>
+                    <option>16+</option>
+                    <option>Enter your own</option>
+                </select>
+
+                <label for="language">Language</label>
+                <select data-id="29" id="language" class="input-field">
+                    <option></option>
+                    <option>English</option>
+                    <option>Japanese</option>
+                </select>
+
+                <label for="card-size">Card Size</label>
+                <select data-id="30" id="card-size" class="input-field">
+                    <option></option>
+                    <option>Standard</option>
+                    <option>Oversized</option>
+                    <option>Japanese</option>
+                    <option>Enter your own</option>
+                </select>
+
+                <label for="manu-year">Year Manufactured</label>
+                <input data-id="31" id="manu-year" class="input-field" type="number">
+
+                <label for="event">Convention/Event</label>
+                <input data-id="34" id="event" class="input-field" type="text">
+
+                <label for="material">Material</label>
+                <select data-id="33" id="material" class="input-field">
+                    <option></option>
+                    <option>Card Stock</option>
+                    <option>Paper</option>
+                    <option>Enter your own</option>
+                </select>
+
             </div>
         </div>
 
         <!-- hidden -->
-        <input data-id="2" id="category" value="183454" class="input-field" hidden>
+        <div style="display: none;">
+            <input data-id="2" id="category" value="183454" class="input-field">
 
-        <input id="session-id" value="" hidden>
+            <input id="session-id" value="">
+        </div>
 
-        <button id="load-button" class="btn btn-primary">Load</button>
         <button id="static-button" class="btn btn-primary">Continue</button>
     </section>
 {% endblock %}

@@ -9,6 +9,7 @@ urlpatterns = [
     path("register", views.register, name="register"),
     path("unique/<int:id>", views.unique, name="unique"),
     path("test", views.test, name="test"),
+    path("download/<int:id>", views.download, name="download"),
 
     # JSON paths
     path("input", views.input, name="input"),

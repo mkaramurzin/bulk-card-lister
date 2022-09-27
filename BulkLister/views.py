@@ -7,8 +7,6 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 import csv
-from tempfile import NamedTemporaryFile
-import shutil
 import json
 from datetime import datetime
 
@@ -74,29 +72,48 @@ def index(request):
     else:
         return render(request, "BulkLister/index.html")
 
+# @csrf_exempt
+# def input(request):
+#     data = json.loads(request.body)
+#     print(data)
+#     array = data.get("array", "")
+#     session_id = data.get("session_id", "")
+#     value = data.get("input", "")
+#     index = data.get("index", "")
+    
+#     new_field = Field(index=index, value=value)
+#     new_field.save()
+
+#     # print(session_id)
+#     # print(new_field.value)
+#     # print(new_field.index)
+
+#     if session_id is "":
+#         session = Session()
+#         session.save()
+#     else:
+#         session = Session.objects.get(id=session_id)
+#         session.save()
+
+#     session.static.add(new_field)
+#     session.save()
+
+#     return JsonResponse({"id": session.id})
+
 @csrf_exempt
 def input(request):
     data = json.loads(request.body)
-    session_id = data.get("session_id", "")
-    value = data.get("input", "")
-    index = data.get("index", "")
-    
-    new_field = Field(index=index, value=value)
-    new_field.save()
+    array = data.get("array", "")
 
-    # print(session_id)
-    # print(new_field.value)
-    # print(new_field.index)
-
-    if session_id is "":
-        session = Session()
-        session.save()
-    else:
-        session = Session.objects.get(id=session_id)
-        session.save()
-
-    session.static.add(new_field)
+    session = Session()
     session.save()
+
+    for input in array:
+        field = Field(index=input[0], value=input[1])
+        field.save()
+        session.static.add(field)
+        session.save()
+    
 
     return JsonResponse({"id": session.id})
 
@@ -110,36 +127,61 @@ def unique(request, id):
         print("TEST")
         print(str(item.index) + ":" + str(item.value))
 
-    new_listing = ListingInfo()
-    new_listing.save()
-
-    session.listings.add(new_listing)
 
     return render(request, "BulkLister/unique.html", {
         "fields": session.static.all(),
         "session": session.id,
-        "listing": new_listing.id
     })
 
 @csrf_exempt
 def finish(request):
     data = json.loads(request.body)
+    array = data.get("array")
     session_id = data.get("session_id", "")
-    listing_id = data.get("listing_id", "")
-    value = data.get("input", "")
-    index = data.get("index", "")
-    print("TEST")
-    print(str(index) + ":" + str(value))
 
     session = Session.objects.get(id=session_id)
-    listing = ListingInfo.objects.get(id=listing_id)
+    new_listing = ListingInfo()
+    new_listing.save()
 
-    new_field = Field(index=index, value=value)
-    new_field.save()
-
-    listing.listing.add(new_field)
+    for input in array:
+        field = Field(index=input[0], value=input[1])
+        field.save()
+        new_listing.add(field)
+        new_listing.save()
+    
+    session.listings.add(new_listing)
+    session.save()
 
     return JsonResponse({"message":"success"})
+
+def download(request, id):
+    session = Session.objects.get(id=id)
+
+    if request.method == 'GET':
+
+        return render(request, "download/test.html", {
+            "id": session.id
+        })
+    
+    now = datetime.now()
+    dt_string = now.strftime("%d-%m-%Y-%H-%M-%S")
+
+    template = "template/CCG.csv"
+    filename = "ebay-lisitng-"+str(dt_string)+".csv"
+
+    with open(filename, 'rt', encoding="utf8", newline='') as file, tempfile:
+        writer = csv.writer(tempfile)
+        reader = csv.reader(file)
+        writer.writerow(next(reader))
+
+        for listing in session.listings.all():
+            row = []
+            for data in listing.listing.all():
+                row.append(data.value)
+            writer.writerow(row)
+
+    
+    
 
 
 @csrf_exempt
