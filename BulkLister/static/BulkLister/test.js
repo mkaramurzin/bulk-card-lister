@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(result => {
            console.log(result)
            let id = document.querySelector('#session-id').value; 
-           location.href = `/finish/${id}`;
+           location.href = `/download/${id}`;
         })
         .catch(error => {
             console.log(error);

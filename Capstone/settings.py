@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-oxl+r%=eee^$zf(@m@vj_)8+e%ejf=h9sb@)r1ss7pd4(g@$2*'
+SECRET_KEY = 'django-insecure-v9z(+hiar_#!6jfl0og%$$yt*@w#&^+ugfsl7ehifmta69o&hc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -81,7 +81,7 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = 'BulkLister.User'
+AUTH_USER_MODEL = "BulkLister.User"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

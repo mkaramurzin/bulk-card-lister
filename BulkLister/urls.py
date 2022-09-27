@@ -10,6 +10,7 @@ urlpatterns = [
     path("unique/<int:id>", views.unique, name="unique"),
     path("test", views.test, name="test"),
     path("download/<int:id>", views.download, name="download"),
+    path("file/<int:id>", views.file, name="file"),
 
     # JSON paths
     path("input", views.input, name="input"),

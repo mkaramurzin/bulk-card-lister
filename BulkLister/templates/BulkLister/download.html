@@ -4,8 +4,10 @@
 {% block body %}
     <section class="form-section">
         <div style="text-align:center;">
+            <h1>{{ id }}</h1>
             <h5>Download this file and upload it to <a href="https://www.ebay.com/sh/reports" target="_blank">Ebay</a></h5>
-            <a href="{% url 'download' id=id %}"><button class="btn btn-primary">Download</button></a>
+            <input id="file" value="{{ file }}" type="text" name="file" hidden>
+            <a href="{% url 'file' id=id %}"><button class="btn btn-primary">Download</button></a>
         </div>
     </section>
 {% endblock %}

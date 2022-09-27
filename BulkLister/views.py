@@ -122,10 +122,10 @@ def unique(request, id):
     session = Session.objects.get(id=id)
     data = session.static.all()
     # data.filter(index=12, value="").delete() WORKS
-    for item in data:
-        # data.delete(item)
-        print("TEST")
-        print(str(item.index) + ":" + str(item.value))
+    # for item in data:
+    #     # data.delete(item)
+    #     print("TEST")
+    #     print(str(item.index) + ":" + str(item.value))
 
 
     return render(request, "BulkLister/unique.html", {
@@ -146,11 +146,16 @@ def finish(request):
     for input in array:
         field = Field(index=input[0], value=input[1])
         field.save()
-        new_listing.add(field)
+        new_listing.listing.add(field)
         new_listing.save()
     
     session.listings.add(new_listing)
     session.save()
+
+    # print("--------------------------------------")
+    # for listing in session.listings.all():
+    #     for data in listing.listing.all():
+    #         print(data.index)
 
     return JsonResponse({"message":"success"})
 
@@ -158,29 +163,49 @@ def download(request, id):
     session = Session.objects.get(id=id)
 
     if request.method == 'GET':
+        # print("--------------------------------------")
+        # for listing in session.listings.all():
+        #     for data in listing:
+        #         print(data)
+        now = datetime.now()
+        dt_string = now.strftime("%d-%m-%Y-%H-%M-%S")
 
-        return render(request, "download/test.html", {
-            "id": session.id
+        session.csv_dir = "ebay-lisitng-"+str(dt_string)+".csv"
+        session.save()
+        template = "listing-template/CCG.csv"
+        filename = "download/" + session.csv_dir
+
+        with open(template, 'rt', encoding="utf8", newline='') as temp, open(filename, "wt", encoding="utf8", newline='') as file:
+            writer = csv.writer(file)
+            reader = csv.reader(temp)
+            writer.writerow(next(reader))
+
+            for listing in session.listings.all():
+                i = 0
+                row = []
+                while(i < 80):
+                    for data in listing.listing.all():
+                        if(data.index == i):
+                            row.append(data.value)
+                    i += 1
+                writer.writerow(row)
+
+        return render(request, "BulkLister/download.html", {
+            "id": session.id,
         })
-    
-    now = datetime.now()
-    dt_string = now.strftime("%d-%m-%Y-%H-%M-%S")
 
-    template = "template/CCG.csv"
-    filename = "ebay-lisitng-"+str(dt_string)+".csv"
+def file(request, id):
+    session = Session.objects.get(id=id)
+    filename = session.csv_dir
 
-    with open(filename, 'rt', encoding="utf8", newline='') as file, tempfile:
-        writer = csv.writer(tempfile)
-        reader = csv.reader(file)
-        writer.writerow(next(reader))
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-        for listing in session.listings.all():
-            row = []
-            for data in listing.listing.all():
-                row.append(data.value)
-            writer.writerow(row)
+    with open(os.path.join(base_dir + '/download/', filename), 'rt', newline='') as f:
+        data = f.read()
 
-    
+    response = HttpResponse(data)
+    response['Content-Disposition'] = 'attachment; filename="listings.csv"'
+    return response
     
 
 
