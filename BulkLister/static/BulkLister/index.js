@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+qdocument.addEventListener('DOMContentLoaded', function() {
     document.querySelector("#graded").addEventListener('change', function() {
         let select = document.querySelector('#graded')
         let value = select.options[select.selectedIndex].value;

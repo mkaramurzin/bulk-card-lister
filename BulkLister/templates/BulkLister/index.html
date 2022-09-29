@@ -264,6 +264,53 @@
             <option>Enter your own</option>
         </select>
 
+        <label for="shipping-type">Shipping Type</label>
+        <select data-id="62" id="shipping-type" class="input-field">
+            <option></option>
+            <option>Flat</option>
+            <option>Calculated</option>
+            <option>No shipping</option>
+        </select>
+
+        <label for="dispatch">Max Dispatch Time (days)</label>
+        <input data-id="67" id="dispatch" class="input-field" type="number">
+
+        <h5>Domestic Shipping</h5>
+
+        <label for="shipping-cost1">Shipping Cost</label>
+        <input data-id="64" id="shipping-cost1" class="input-field" type="number">
+
+        <label for="shipping-service1">Shipping Service</label>
+        <select data-id="63" id="shipping-service1" class="input-field">
+            <option></option>
+            <option>USPSExpressFlatRateEnvelope</option>
+            <option>USPSExpressMail</option>
+            <option>USPSFirstClass</option>
+            <option>FedExHomeDelivery</option>
+            <option>FedExStandardOvernight</option>
+            <option>Enter your own</option>
+        </select>
+
+        <h5>International Shipping</h5>
+
+        <label for="shipping-cost2">Shipping Cost</label>
+        <input data-id="66" id="shipping-cost2" class="input-field" type="number">
+
+        <label for="shipping-service2">Shipping Service</label>
+        <select data-id="65" id="shipping-service2" class="input-field">
+            <option></option>
+            <option>USPSExpressMailInternational</option>
+            <option>UPSStandardToCanada</option>
+            <option>Enter your own</option>
+        </select>
+
+        <label for="additional-shipping-checkbox">Show Shipping Details
+            <input type="checkbox" id="additional-shipping-checkbox">
+        </label>
+        <div id="additional-shipping">
+            
+        </div>
+
         <!-- extra details -->
 
         <label for="additional-options-checkbox">Show additional options
@@ -465,7 +512,8 @@
                 <label for="cost">Cost</label>
                 <input data-id="46" id="cost" class="input-field" type="text">
 
-                
+                <label for="gallery">Gallery Type</label>
+                <input data-id="50" id="gallery" class="input-field" type="text">
 
             </div>
         </div>
