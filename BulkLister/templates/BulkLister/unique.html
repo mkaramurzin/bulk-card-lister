@@ -75,9 +75,15 @@
         <input id="session-id" value="{{ session }}">
     </div>
 
-    <a href="{% url 'unique' id=session %}">
+    <!-- <a href="{% url 'unique' id=session %}">
         <button id="next" class="btn btn-secondary">Next Listing</button>
     </a>
+    <a href="{% url 'download' id=session %}">
+        <button id="finish" class="btn btn-primary">Finish</button>
+    </a> -->
+
+    <button id="next" class="btn btn-secondary">Next Listing</button>
+    <!-- <button id="finish" class="btn btn-primary">Finish</button> -->
     <a href="{% url 'download' id=session %}">
         <button id="finish" class="btn btn-primary">Finish</button>
     </a>

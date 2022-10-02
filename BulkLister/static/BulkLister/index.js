@@ -1,4 +1,4 @@
-qdocument.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.querySelector("#graded").addEventListener('change', function() {
         let select = document.querySelector('#graded')
         let value = select.options[select.selectedIndex].value;
@@ -41,7 +41,9 @@ qdocument.addEventListener('DOMContentLoaded', function() {
 
     // Continue button clicked
     document.querySelector('#static-button').onclick = function() {
-        StaticContinue()
+        StaticContinue();
+        // let id = document.querySelector('#session-id').value;
+        // location.href = `unique/${id}`;
     };
 
     // Card is graded
@@ -86,6 +88,16 @@ qdocument.addEventListener('DOMContentLoaded', function() {
         }
     })
 
+    // additional shipping details
+    document.querySelector('#additional-shipping-checkbox').addEventListener('change', function() {
+        let box = document.querySelector('#additional-shipping-checkbox');
+        if(box.checked) {
+            document.querySelector('#additional-shipping').style.display = 'block';
+        } else {
+            document.querySelector('#additional-shipping').style.display = 'none';
+        }
+    })
+
     // paypal accepted
     document.querySelector('#paypal-accepted').addEventListener('change', function() {
         let select = document.querySelector('#paypal-accepted')
@@ -97,34 +109,33 @@ qdocument.addEventListener('DOMContentLoaded', function() {
         }
     })
 
+    // returns accepted
+    document.querySelector('#returns-accepted').addEventListener('change', function() {
+        let select = document.querySelector('#returns-accepted')
+        let value = select.options[select.selectedIndex].value;
+        if(value === "ReturnsAccepted") {
+            document.querySelector('#returns').style.display = 'block';
+        } else {
+            document.querySelector('#returns').style.display = 'none';
+        }
+    })
 
+    // eBay business policy
+    document.querySelector('#policy').addEventListener('change', function() {
+        let select = document.querySelector('#policy')
+        let value = select.options[select.selectedIndex].value;
+        if(value === "Yes") {
+            document.querySelector('#policy-yes').style.display = 'block';
+            document.querySelector('#policy-no').style.display = 'none';
+        } else if(value == "No") {
+            document.querySelector('#policy-yes').style.display = 'none';
+            document.querySelector('#policy-no').style.display = 'block';
+        } else {
+            document.querySelector('#policy-yes').style.display = 'none';
+            document.querySelector('#policy-no').style.display = 'none';
+        }
+    })
 
-    // next listing
-    document.querySelector('#next').onclick = function() {
-        alert("TEST")
-    }
-
-    // finish
-    document.querySelector('#finish').onclick = function() {
-        alert("TEST")
-        document.querySelectorAll('.input-field').forEach(field => {
-            fetch('/finish', {
-                method: 'POST',
-                body: JSON.stringify({
-                    input: field.value,
-                    index: field.dataset.id,
-                    listing_id: document.querySelector('#listing').value,
-                    session_id: document.querySelector('#session').value
-                })
-            })
-            .then(response => response.json())
-            .then(result => {
-                console.log(result)
-            })
-        })
-
-        location.href = 'test';
-    }
 
     // info icons
     document.querySelectorAll('.glyphicon glyphicon-info-sign').forEach(icon => {

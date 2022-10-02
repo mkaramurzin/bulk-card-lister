@@ -9,10 +9,10 @@ urlpatterns = [
     path("register", views.register, name="register"),
     path("unique/<int:id>", views.unique, name="unique"),
     path("test", views.test, name="test"),
-    path("download/<int:id>", views.download, name="download"),
+    path("unique/download/<int:id>", views.download, name="download"),
     path("file/<int:id>", views.file, name="file"),
 
     # JSON paths
+    path("unique/finish", views.finish, name="finish"),
     path("input", views.input, name="input"),
-    path("finish", views.finish, name="finish")
 ]

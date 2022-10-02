@@ -198,6 +198,9 @@
             <option>Enter your own</option>
         </select>
 
+        <label for="description">*Description</label>
+        <input data-id="51" id="description" class="input-field" type="text">
+
         <!-- Selling details -->
 
         <h4 class="title">Selling details</h5>
@@ -264,51 +267,114 @@
             <option>Enter your own</option>
         </select>
 
-        <label for="shipping-type">Shipping Type</label>
-        <select data-id="62" id="shipping-type" class="input-field">
+        <label>*Do you have ebay 
+             <a href="https://www.bizpolicy.ebay.com/businesspolicy/manage" target="_blank">Business Policies</a> ?</label>
+        <select id="policy">
             <option></option>
-            <option>Flat</option>
-            <option>Calculated</option>
-            <option>No shipping</option>
+            <option>Yes</option>
+            <option>No</option>
         </select>
+        <div id="policy-yes" style="display: none;">
+            <label for="shipping-policy">Shipping Policy Name</label>
+            <input data-id="75" id="shipping-policy" class="input-field" type="text">
 
-        <label for="dispatch">Max Dispatch Time (days)</label>
-        <input data-id="67" id="dispatch" class="input-field" type="number">
+            <label for="return-policy">Shipping Policy Name</label>
+            <input data-id="76" id="return-policy" class="input-field" type="text">
 
-        <h5>Domestic Shipping</h5>
+            <label for="payment-policy">Shipping Policy Name</label>
+            <input data-id="77" id="payment-policy" class="input-field" type="text">
+        </div>
+        <div id="policy-no" style="display: none;">
+            <label for="shipping-type">Shipping Type</label>
+            <select data-id="62" id="shipping-type" class="input-field">
+                <option></option>
+                <option>Flat</option>
+                <option>Calculated</option>
+                <option>No shipping</option>
+            </select>
 
-        <label for="shipping-cost1">Shipping Cost</label>
-        <input data-id="64" id="shipping-cost1" class="input-field" type="number">
+            <label for="dispatch">Max Dispatch Time (days)</label>
+            <input data-id="67" id="dispatch" class="input-field" type="number">
 
-        <label for="shipping-service1">Shipping Service</label>
-        <select data-id="63" id="shipping-service1" class="input-field">
-            <option></option>
-            <option>USPSExpressFlatRateEnvelope</option>
-            <option>USPSExpressMail</option>
-            <option>USPSFirstClass</option>
-            <option>FedExHomeDelivery</option>
-            <option>FedExStandardOvernight</option>
-            <option>Enter your own</option>
-        </select>
+            <label for="returns-accepted">Returns Accepted Option</label>
+            <select data-id="70" id="returns-accepted" class="input-field">
+                <option></option>
+                <option>ReturnsAccepted</option>
+                <option>ReturnsNotAccepted</option>
+            </select>
+            <div id="returns" style="display: none;">
+                <label for="returns-option">Returns Within Option</label>
+                <select data-id="71" id="returns-option" class="input-field">
+                    <option></option>
+                    <option>14 days</option>
+                    <option>30 days</option>
+                    <option>60 days</option>
+                </select>
 
-        <h5>International Shipping</h5>
+                <label for="refund-option">Refund Option</label>
+                <select data-id="72" id="refund-option" class="input-field">
+                    <option></option>
+                    <option>MoneyBack</option>
+                    <option>MoneyBackOrExchange</option>
+                    <option>MoneyBackOrReplacement</option>
+                </select>
 
-        <label for="shipping-cost2">Shipping Cost</label>
-        <input data-id="66" id="shipping-cost2" class="input-field" type="number">
+                <label for="shipping-paid-by">Return Shipping Paid By:</label>
+                <select data-id="73" id="shipping-paid-by" class="input-field">
+                    <option></option>
+                    <option>Buyer</option>
+                    <option>Seller</option>
+                </select>
+            </div>
+            <h4>Domestic Shipping</h4>
 
-        <label for="shipping-service2">Shipping Service</label>
-        <select data-id="65" id="shipping-service2" class="input-field">
-            <option></option>
-            <option>USPSExpressMailInternational</option>
-            <option>UPSStandardToCanada</option>
-            <option>Enter your own</option>
-        </select>
+            <label for="shipping-cost1">Shipping Cost</label>
+            <input data-id="64" id="shipping-cost1" class="input-field" type="number">
 
-        <label for="additional-shipping-checkbox">Show Shipping Details
+            <label for="shipping-service1">Shipping Service</label>
+            <select data-id="63" id="shipping-service1" class="input-field">
+                <option></option>
+                <option>USPSExpressFlatRateEnvelope</option>
+                <option>USPSExpressMail</option>
+                <option>USPSFirstClass</option>
+                <option>FedExHomeDelivery</option>
+                <option>FedExStandardOvernight</option>
+                <option>Enter your own</option>
+            </select>
+
+            <h4>International Shipping</h4>
+
+            <label for="shipping-cost2">Shipping Cost</label>
+            <input data-id="66" id="shipping-cost2" class="input-field" type="number">
+
+            <label for="shipping-service2">Shipping Service</label>
+            <select data-id="65" id="shipping-service2" class="input-field">
+                <option></option>
+                <option>USPSExpressMailInternational</option>
+                <option>UPSStandardToCanada</option>
+                <option>Enter your own</option>
+            </select>
+
+            <label for="additional-details">Additional Details</label>
+            <input data-id="74" id="additional-details" class="input-field" type="text">
+        </div>
+
+
+        <label for="additional-shipping-checkbox">Show More Shipping Details
             <input type="checkbox" id="additional-shipping-checkbox">
         </label>
-        <div id="additional-shipping">
-            
+        <div id="additional-shipping" style="display: none;">
+            <label for="shipping-promotion">Promotional Shipping Discount</label>
+            <input data-id="68" id="hipping-promotion" class="input-field" type="text">
+
+            <label for="shipping-discount">Shipping Discount Profile ID</label>
+            <input data-id="69" id="shipping-discount" class="input-field" type="text">
+
+            <label for="takeback-policy">Take Back Policy ID</label>
+            <input data-id="78" id="takeback-policy" class="input-field" type="text">
+
+            <label for="product-policy">Product Compliance Policy ID</label>
+            <input data-id="79" id="product-policy" class="input-field" type="text">
         </div>
 
         <!-- extra details -->

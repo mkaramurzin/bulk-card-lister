@@ -145,6 +145,7 @@ def finish(request):
 
     for input in array:
         field = Field(index=input[0], value=input[1])
+        print(f'{field.index} : {field.value}')
         field.save()
         new_listing.listing.add(field)
         new_listing.save()
@@ -152,10 +153,10 @@ def finish(request):
     session.listings.add(new_listing)
     session.save()
 
-    # print("--------------------------------------")
-    # for listing in session.listings.all():
-    #     for data in listing.listing.all():
-    #         print(data.index)
+    print("--------------------------------------")
+    for listing in session.listings.all():
+        for data in listing.listing.all():
+            print(data.index)
 
     return JsonResponse({"message":"success"})
 
@@ -169,6 +170,17 @@ def download(request, id):
         #         print(data)
         now = datetime.now()
         dt_string = now.strftime("%d-%m-%Y-%H-%M-%S")
+
+        for listing in session.listings.all():
+            print('------------------------------------=')
+
+        # clean duplicates
+        for listing in session.listings.all():
+            data = listing.listing.all()
+            data.filter(index=12, value="").delete()
+            data.filter(index=15, value="").delete()
+            data.filter(index=27, value="").delete()
+            data.filter(index=32, value="").delete()
 
         session.csv_dir = "ebay-lisitng-"+str(dt_string)+".csv"
         session.save()
@@ -186,10 +198,12 @@ def download(request, id):
                 while(i < 80):
                     for data in listing.listing.all():
                         if(data.index == i):
-                            row.append(data.value)
+                            if i == 71:
+                                row.append(returns_option(data.value))
+                            else:
+                                row.append(data.value)
                     i += 1
                 writer.writerow(row)
-
         return render(request, "BulkLister/download.html", {
             "id": session.id,
         })
@@ -212,3 +226,12 @@ def file(request, id):
 @csrf_exempt
 def test(request):
     return render(request, "BulkLister/test.html")
+
+# helper methods
+def returns_option(val):
+    if val is '14 days':
+        return 'Days_14'
+    elif val is '30 days':
+        return 'Days_30'
+    elif val is '60 days':
+        return 'Days_60'
