@@ -137,10 +137,6 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
 
-    // info icons
-    $(document).ready(function() {
-        $('#txtName').tooltip();
-    });
 
 })
 

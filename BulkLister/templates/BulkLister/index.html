@@ -166,6 +166,53 @@
             </select>
         </div>
 
+        <label for="graded">*Graded
+            <span class="glyphicon glyphicon-info-sign" data-tooltip="Whether the condition of the product has been authenticated by a professional grading company"></span>
+        </label>
+        <select data-id="10" id="graded" class="input-field">
+            <option></option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+
+        <div id="graded-yes" style="display: none;">
+            <label for="grade">Grade
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Value used to determine the product's condition from lowest to highest quality, verified by a professional grading company"></span>
+            </label>
+            <select data-id="17" id="grade" class="input-field">
+                <option></option>
+                <option>10</option>
+                <option>9.5</option>
+                <option>9</option>
+                <option>8.5</option>
+                <option>8</option>
+                <option>7.5</option>
+                <option>7</option>
+                <option>6.5</option>
+                <option>6</option>
+                <option>5.5</option>
+                <option>5</option>
+                <option>4.5</option>
+                <option>4</option>
+                <option>3.5</option>
+                <option>3</option>
+                <option>2.5</option>
+                <option>2</option>
+                <option>1.5</option>
+                <option>1</option>
+            </select>
+
+            <label for="grader">Professional Grader
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Name of the third-party authentication service company that verifies and grades the product"></span>
+            </label>
+            <input data-id="22" id="grader" class="input-field" type="text">
+
+            <label for="cert-number">Certification Number
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Unique identifier assigned to the professionally graded product, set by the professional grading company"></span>
+            </label>
+            <input data-id="26" id="cert-number" class="input-field" type="text">
+        </div>
+
         <label for="card-condition">Card Condition
             <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of physical condition of only ungraded cards. This is not in reference to professional grading standards and grading references are not tolerated. Graded cards are to be listed as a graded card along with their grade, professional grader, and certification number. Item condition should be described conservatively in order to avoid returns on the basis that the item is not as described. For additional information on each card condition, go to www.ebay.com/cardconditions."></span>
         </label>
@@ -272,8 +319,8 @@
         </label>
         <input data-id="54" id="starting-price" class="input-field" type="number">
 
-        <label for="buy-now-price">Buy It Now price
-            <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
+        <label for="buy-now-price">Buy It Now price 
+            <span class="glyphicon glyphicon-info-sign" data-tooltip="Optional. This field indicates the price that is required to immediately buy an auction-style format item. You will need to define the price you are willing to accept for the item, which will in turn immediately end the auction. This field option is not valid for a “Fixed price” format item."></span>
         </label>
         <input data-id="55" id="buy-now-price" class="input-field" type="number">
 
@@ -525,53 +572,6 @@
                 <option>Enter your own</option>
             </select>
 
-            <label for="graded">*Graded
-                <span class="glyphicon glyphicon-info-sign" data-tooltip="Whether the condition of the product has been authenticated by a professional grading company"></span>
-            </label>
-            <select data-id="10" id="graded" class="input-field">
-                <option></option>
-                <option>Yes</option>
-                <option>No</option>
-            </select>
-
-            <div id="graded-yes" style="display: none;">
-                <label for="grade">Grade
-                    <span class="glyphicon glyphicon-info-sign" data-tooltip="Value used to determine the product's condition from lowest to highest quality, verified by a professional grading company"></span>
-                </label>
-                <select data-id="17" id="grade" class="input-field">
-                    <option></option>
-                    <option>10</option>
-                    <option>9.5</option>
-                    <option>9</option>
-                    <option>8.5</option>
-                    <option>8</option>
-                    <option>7.5</option>
-                    <option>7</option>
-                    <option>6.5</option>
-                    <option>6</option>
-                    <option>5.5</option>
-                    <option>5</option>
-                    <option>4.5</option>
-                    <option>4</option>
-                    <option>3.5</option>
-                    <option>3</option>
-                    <option>2.5</option>
-                    <option>2</option>
-                    <option>1.5</option>
-                    <option>1</option>
-                </select>
-
-                <label for="grader">Professional Grader
-                    <span class="glyphicon glyphicon-info-sign" data-tooltip="Name of the third-party authentication service company that verifies and grades the product"></span>
-                </label>
-                <input data-id="22" id="grader" class="input-field" type="text">
-
-                <label for="cert-number">Certification Number
-                    <span class="glyphicon glyphicon-info-sign" data-tooltip="Unique identifier assigned to the professionally graded product, set by the professional grading company"></span>
-                </label>
-                <input data-id="26" id="cert-number" class="input-field" type="text">
-            </div>
-
             <label for="custom-label">Custom Label
                 <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
             </label>
@@ -627,126 +627,125 @@
                     <option>Label or Sticker</option>
                     <option>Enter your own</option>
                 </select>
-
-                <label for="age-level">Age Level
-                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
-                </label>
-                <select data-id="28" id="age-level" class="input-field">
-                    <option></option>
-                    <option>4+</option>
-                    <option>6+</option>
-                    <option>8+</option>
-                    <option>10+</option>
-                    <option>13+</option>
-                    <option>16+</option>
-                    <option>Enter your own</option>
-                </select>
-
-                <label for="language">Language
-                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
-                </label>
-                <select data-id="29" id="language" class="input-field">
-                    <option></option>
-                    <option>English</option>
-                    <option>Japanese</option>
-                </select>
-
-                <label for="card-size">Card Size
-                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
-                </label>
-                <select data-id="30" id="card-size" class="input-field">
-                    <option></option>
-                    <option>Standard</option>
-                    <option>Oversized</option>
-                    <option>Japanese</option>
-                    <option>Enter your own</option>
-                </select>
-
-                <label for="manu-year">Year Manufactured
-                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
-                </label>
-                <input data-id="31" id="manu-year" class="input-field" type="number">
-
-                <label for="event">Convention/Event</label>
-                <input data-id="34" id="event" class="input-field" type="text">
-
-                <label for="material">Material
-                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
-                </label>
-                <select data-id="33" id="material" class="input-field">
-                    <option></option>
-                    <option>Card Stock</option>
-                    <option>Paper</option>
-                    <option>Enter your own</option>
-                </select>
-
-                <label for="vintage">Vintage
-                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
-                </label>
-                <select data-id="35" id="vintage" class="input-field">
-                    <option></option>
-                    <option>Yes</option>
-                    <option>No</option>
-                </select>
-
-                <label for="region">Country/Region of Manufacture
-                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
-                </label>
-                <select data-id="36" id="region" class="input-field">
-                    <option></option>
-                    <option>United States</option>
-                    <option>Japan</option>
-                    <option>Enter your own</option>
-                </select>
-
-                <label for="illustrator">Illustrator
-                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
-                </label>
-                <input data-id="40" id="illustrator" class="input-field" type="text">
-
-                <label for="hp">HP
-                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
-                </label>
-                <input data-id="41" id="hp" class="input-field" type="text">
-
-                <label for="bundle">Custom Bundle
-                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
-                </label>
-                <select data-id="42" id="bundle" class="input-field">
-                    <option></option>
-                    <option>No</option>
-                    <option>Yes</option>
-                </select>
-                <div id="bundle-description">
-                    <input data-id="48" id="bundle-descrip" class="input-field" type="text">
-                </div>
-
-                <label for="ap">Attack/Power
-                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
-                </label>
-                <input data-id="43" id="ap" class="input-field" type="text">
-
-                <label for="dt">Defense/Toughness
-                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
-                </label>
-                <input data-id="44" id="dt" class="input-field" type="text">
-
-                <label for="california">California Prop 65 Warning
-                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
-                </label>
-                <input data-id="45" id="california" class="input-field" type="text">
-
-                <label for="cost">Cost
-                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
-                </label>
-                <input data-id="46" id="cost" class="input-field" type="text">
-
-                <label for="gallery">Gallery Type
-                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
-                </label>
-                <input data-id="50" id="gallery" class="input-field" type="text">
-
             </div>
+            <label for="age-level">Age Level
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Suitable age range of the user for the product"></span>
+            </label>
+            <select data-id="28" id="age-level" class="input-field">
+                <option></option>
+                <option>4+</option>
+                <option>6+</option>
+                <option>8+</option>
+                <option>10+</option>
+                <option>13+</option>
+                <option>16+</option>
+                <option>Enter your own</option>
+            </select>
+
+            <label for="language">Language
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of language supported by the product"></span>
+            </label>
+            <select data-id="29" id="language" class="input-field">
+                <option></option>
+                <option>English</option>
+                <option>Japanese</option>
+            </select>
+
+            <label for="card-size">Card Size
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Size of the card, characterized by size type"></span>
+            </label>
+            <select data-id="30" id="card-size" class="input-field">
+                <option></option>
+                <option>Standard</option>
+                <option>Oversized</option>
+                <option>Japanese</option>
+                <option>Enter your own</option>
+            </select>
+
+            <label for="manu-year">Year Manufactured
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Year the product was produced by the manufacturer, not the same as the year the product was sold or the product’s expiration date"></span>
+            </label>
+            <input data-id="31" id="manu-year" class="input-field" type="number">
+
+            <label for="event">Convention/Event
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Name of the convention or event associated with the product, characterized by event type and/or location and/or year held"></span>
+            </label>
+            <input data-id="34" id="event" class="input-field" type="text">
+
+            <label for="material">Material
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Main or most used material of the product itself, does not include the product’s packaging"></span>
+            </label>
+            <select data-id="33" id="material" class="input-field">
+                <option></option>
+                <option>Card Stock</option>
+                <option>Paper</option>
+                <option>Enter your own</option>
+            </select>
+
+            <label for="vintage">Vintage
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Whether the product has a vintage year of manufacture that is more than 20 years old"></span>
+            </label>
+            <select data-id="35" id="vintage" class="input-field">
+                <option></option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <label for="region">Country/Region of Manufacture
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Geographic location where the product is manufactured. This doesn't include where the individual components are manufactured nor the country where the product is sold from."></span>
+            </label>
+            <select data-id="36" id="region" class="input-field">
+                <option></option>
+                <option>United States</option>
+                <option>Japan</option>
+                <option>Enter your own</option>
+            </select>
+
+            <label for="illustrator">Illustrator
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Name of the artist or person who created the artwork on the product and/or its packaging"></span>
+            </label>
+            <input data-id="40" id="illustrator" class="input-field" type="text">
+
+            <label for="hp">HP
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Number of hit points (HP) the Pokémon character or species has"></span>
+            </label>
+            <input data-id="41" id="hp" class="input-field" type="text">
+
+            <label for="bundle">Custom Bundle
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Whether the main product is sold with complementary or additional products"></span>
+            </label>
+            <select data-id="42" id="bundle" class="input-field">
+                <option></option>
+                <option>No</option>
+                <option>Yes</option>
+            </select>
+            <label for="bundle-description">Bundle Description</label>
+            <input data-id="48" id="bundle-description" class="input-field" type="text">
+
+            <label for="ap">Attack/Power
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Level of attacking strength or power the character on the card or the card itself has"></span>
+            </label>
+            <input data-id="43" id="ap" class="input-field" type="text">
+
+            <label for="dt">Defense/Toughness
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Level of defensive strength or toughness the character on the card or the card itself has"></span>
+            </label>
+            <input data-id="44" id="dt" class="input-field" type="text">
+
+            <label for="california">California Prop 65 Warning
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="California proposition 65 requires businesses to provide warnings to Californians about significant exposure to chemicals that cause cancer, birth defects, or other reproductive harm. Add details about the warning you want to show California buyers. We'll add a warning symbol and the word 'warning:' before the description you enter here, and we'll add 'for more information go to www.p65warnings.ca.gov' following your description."></span>
+            </label>
+            <input data-id="45" id="california" class="input-field" type="text">
+
+            <label for="cost">Cost
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Amount of energy the character or card requires to attack or defend"></span>
+            </label>
+            <input data-id="46" id="cost" class="input-field" type="text">
+
+            <label for="gallery">Gallery Type
+                <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
+            </label>
+            <input data-id="50" id="gallery" class="input-field" type="text">
         </div>
 
         <!-- hidden -->

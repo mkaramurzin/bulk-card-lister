@@ -41,7 +41,9 @@ document.addEventListener('DOMContentLoaded', function() {
             let val = field.value;
             var item = [index, val]
             array.push(item)
+            console.log(index)
         })
+        alert("TEST")
 
         fetch('finish', {
             method: 'POST',
@@ -55,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(result)
             // document.querySelector('#session-id').value = result.id;
             let id = document.querySelector('#session-id').value;
-            location.href = `download/${id}`;
+            // location.href = `download/${id}`;
         })
         .catch(error => {
             console.log(error);
@@ -89,4 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(error);
         });
     }
+
+    
 })
