@@ -3,23 +3,34 @@
 
 {% block body %} 
     <section class="form-section">
-
         <h3 class="title">Enter static listing info</h3>
+
+        <div class="div-tooltip"></div>
         
+            <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
+        </label>
         <!-- Visible  -->
 
-        <label for="action">*Action</label>
+        <label for="action">*Action
+            <span class="glyphicon glyphicon-info-sign" data-tooltip="Action will post new listings to eBay."></span>
+        </label>
         <select data-id="0" id="action" class="input-field">
             <option>Add</option>
         </select>
 
-        <label for="title">*Title</label>
+        <label for="title">*Title 
+            <span class="glyphicon glyphicon-info-sign" data-tooltip="A descriptive title helps buyers find your item. State exactly what your item is. Include words that buyers will use to search for your item."></span>
+        </label>
         <input data-id="4" id="title" type="text" class="input-field">
 
-        <label for="subtitle">Subtitle</label>
+        <label for="subtitle">Subtitle
+            <span class="glyphicon glyphicon-info-sign" data-tooltip="A descriptive title helps buyers find your item. State exactly what your item is. Include words that buyers will use to search for your item."></span>
+        </label>
         <input data-id="5" id="subtitle" type="text" class="input-field">
 
-        <label for="condition">*Condition</label>
+        <label for="condition">Condition 
+            <span class="glyphicon glyphicon-info-sign" data-tooltip="Select the condition of the item you're listing."></span>
+        </label>
         <select data-id="8" id="condition" class="input-field">
             <option></option>
             <option>New</option>
@@ -27,10 +38,14 @@
             <option>Used</option>
         </select>
 
-        <label for="photos">Photos <a href="https://imgbb.com/" target="_blank">(upload and copy url)</a></label>
+        <label for="photos">*Photos <a href="https://imgbb.com/" target="_blank">(upload and copy url) </a>
+            <span class="glyphicon glyphicon-info-sign" data-tooltip="URL of the image to add to your listing. For best results, use an image that is in .jpg format and is at least 1000 pixels on the longest side."></span>
+        </label>
         <input data-id="49" id="photos" class="input-field" type="text">
 
-        <label for="game">*Game<span id="i-game" class="glyphicon glyphicon-info-sign"></span></label>
+        <label for="game">*Game 
+            <span class="glyphicon glyphicon-info-sign" data-tooltip="Name of the game the product belongs to or is compatible with"></span>
+        </label>
         <select data-id="9" id="game" class="input-field">
             <option></option>
             <option id="game-option">Pokemon TCG</option>
@@ -38,7 +53,9 @@
         </select>
 
         <div id="MTG" style="display: none;">
-            <label id="mtg-ct-label" for="card-type">*Card Type</label>
+            <label id="mtg-ct-label" for="card-type">Card Type
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of action the character on the card or the card itself has"></span>
+            </label>
             <select data-id="12" id="mtg-card-type" class="input-field">
                 <option></option>
                 <option class="ct-option">Creature</option>
@@ -51,13 +68,19 @@
                 <option class="ct-option">Enter your own</option>
             </select>
 
-            <label for="mtg-spec">Speciality</label>
+            <label for="mtg-spec">Speciality
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of special variance the Pokémon character or species has"></span>
+            </label>
             <input data-id="27" id="mtg-spec" type="text" class="input-field">
 
-            <label for="mtg-stage">Stage</label>
+            <label for="mtg-stage">Stage
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of evolution stage of the Pokémon or Digimon character"></span>
+            </label>
             <input data-id="32" id="mtg-stage" type="text" class="input-field">
 
-            <label for="mtg-set">*Set</label>
+            <label for="mtg-set">Set
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Name of the set the product belongs to"></span>
+            </label>
             <select data-id="15" id="mtg-set" class="input-field">
                 <option></option>
                 <option>Dominaria United</option>
@@ -71,7 +94,9 @@
         </div>
 
         <div id="pokemon" style="display: none;">
-            <label id="pokemon-ct-label" for="card-type">*Card Type</label>
+            <label id="pokemon-ct-label" for="card-type">Card Type
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of action the character on the card or the card itself has"></span>
+            </label>
             <select data-id="12" id="pokemon-card-type" class="input-field">
                 <option></option>
                 <option class="ct-option">Energy-Basic</option>
@@ -87,7 +112,9 @@
                 <option class="ct-option">Enter your own</option>
             </select>
 
-            <label for="pokemon-spec">Speciality</label>
+            <label for="pokemon-spec">Speciality
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of special variance the Pokémon character or species has"></span>
+            </label>
             <select data-id="27" id="pokemon-spec" class="input-field">
                 <option></option>
                 <option>BREAK</option>
@@ -105,7 +132,9 @@
                 <option>Enter your own</option>
             </select>
 
-            <label for="pokemon-stage">Stage</label>
+            <label for="pokemon-stage">Stage
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of evolution stage of the Pokémon or Digimon character"></span>
+            </label>
             <select data-id="32" id="pokemon-stage" class="input-field">
                 <option></option>
                 <option>Basic</option>
@@ -114,7 +143,9 @@
                 <option>Enter your own</option>
             </select>
 
-            <label for="pokemon-set">*Set</label>
+            <label for="pokemon-set">Set
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Name of the set the product belongs to"></span>
+            </label>
             <select data-id="15" id="pokemon-set" class="input-field">
                 <option></option>
                 <option>Hidden Fates</option>
@@ -135,7 +166,9 @@
             </select>
         </div>
 
-        <label for="card-condition">Card Condition</label>
+        <label for="card-condition">Card Condition
+            <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of physical condition of only ungraded cards. This is not in reference to professional grading standards and grading references are not tolerated. Graded cards are to be listed as a graded card along with their grade, professional grader, and certification number. Item condition should be described conservatively in order to avoid returns on the basis that the item is not as described. For additional information on each card condition, go to www.ebay.com/cardconditions."></span>
+        </label>
         <select data-id="23" id="card-condition" class="input-field">
             <option></option>
             <option>Near Mint or Better</option>
@@ -144,13 +177,19 @@
             <option>Heavily Played (Poor)</option>
         </select>
 
-        <label for="card-name">*Card name</label>
+        <label for="card-name">Card name
+            <span class="glyphicon glyphicon-info-sign" data-tooltip="Name of the recognized character or scene summary on the card"></span>
+        </label>
         <input data-id="11" id="card-name" class="input-field" type="text">
 
-        <label for="character">*Character</label>
+        <label for="character">Character
+            <span class="glyphicon glyphicon-info-sign" data-tooltip="Recognized character that the product has on itself or on the packaging. For example, Character: Chewbacca"></span>
+        </label>
         <input data-id="13" id="character" class="input-field" type="text">
 
-        <label for="color">*Attribute/MTG:Color</label>
+        <label for="color">Attribute/MTG:Color
+            <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of property, energy or trait the character on the card or the card itself has"></span>
+        </label>
         <select data-id="16" id="color" class="input-field">
             <option></option>
             <option>Multi-Color</option>
@@ -182,7 +221,9 @@
             <option>Enter your own</option>
         </select>
 
-        <label for="creature-type">Creature/Monster Type</label>
+        <label for="creature-type">Creature/Monster Type
+            <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of creature or monster on the card or the card itself has"></span>
+        </label>
         <select data-id="21" id="creature-type" class="input-field">
             <option></option>
             <option>Beast</option>
@@ -198,20 +239,26 @@
             <option>Enter your own</option>
         </select>
 
-        <label for="description">*Description</label>
+        <label for="description">*Description
+            <span class="glyphicon glyphicon-info-sign" data-tooltip="Describe the item you're selling and provide complete and accurate details. Use a clear and concise format to keep your description mobile-friendly."></span>
+        </label>
         <input data-id="51" id="description" class="input-field" type="text">
 
         <!-- Selling details -->
 
         <h4 class="title">Selling details</h5>
-        <label for="format">*Format</label>
+        <label for="format">*Format
+            <span class="glyphicon glyphicon-info-sign" data-tooltip="Select how you want to sell the items you're listing."></span>
+        </label>
         <select data-id="52" id="format" class="input-field">
             <option></option>
             <option>Auction-style</option>
             <option>Fixed price</option>
         </select>
 
-        <label for="duration">*Duration</label>
+        <label for="duration">*Duration
+            <span class="glyphicon glyphicon-info-sign" data-tooltip="Select how long your listing will run. If your item doesn't sell, you can choose to relist it."></span>
+        </label>
         <select data-id="53" id="duration" class="input-field">
             <option></option>
             <option>3 days</option>
@@ -220,20 +267,28 @@
             <option>10 days</option>
         </select>
 
-        <label for="starting-price">*Starting price</label>
+        <label for="starting-price">*Starting price
+            <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
+        </label>
         <input data-id="54" id="starting-price" class="input-field" type="number">
 
-        <label for="buy-now-price">Buy It Now price</label>
+        <label for="buy-now-price">Buy It Now price
+            <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
+        </label>
         <input data-id="55" id="buy-now-price" class="input-field" type="number">
 
-        <label for="quantity">Quantity</label>
+        <label for="quantity">Quantity
+            <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
+        </label>
         <input data-id="56" id="quantity" class="input-field" type="number">
 
         <label for="additional-selling">Additional selling details
             <input type="checkbox" id="additional-selling">
         </label>
         <div id="additional-selling-details" style="display: none;">
-            <label for="paypal-accepted">PayPal Accepted</label>
+            <label for="paypal-accepted">PayPal Accepted
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Required to use only if you are not yet opted into eBay Payments or Business Policies."></span>
+            </label>
             <select data-id="57" id="paypal-accepted" class="input-field">
                 <option></option>
                 <option>Yes</option>
@@ -241,25 +296,33 @@
             </select>
 
             <div id="paypal-accepted-yes" style="display: none;">
-                <label for="paypal-email">PayPal email address</label>
+                <label for="paypal-email">PayPal email address
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip="Required to use only if you have not yet opted into eBay Payments or Business Policies. When you accept PayPal, you must also provide the email address associated with your PayPal account."></span>
+                </label>
                 <input data-id="58" id="paypal-email" class="input-field" type="text">
             </div>
 
-            <label for="immediate-pay">Immediate Pay Required</label>
+            <label for="immediate-pay">Immediate Pay Required
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Optional. Indicates that immediate payment is required from the buyer. This field is used to require that an item be paid for before it is considered closed and purchased. This field is supported for Premier and Business PayPal accounts only."></span>
+            </label>
             <select data-id="59" id="immediate-pay" class="input-field">
                 <option></option>
                 <option>Yes</option>
                 <option>No</option>
             </select>
 
-            <label for="payment-instructions">Payment Instructions</label>
+            <label for="payment-instructions">Payment Instructions
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Optional. Use this field if you have other instructions for your buyers."></span>
+            </label>
             <input data-id="60" id="payment-instructions" class="input-field" type="text">
         </div>
 
         <!-- Shipping details -->
         <h4 class="title">Shipping details</h5>
 
-        <label for="location">*Item location</label>
+        <label for="location">*Item location
+            <span class="glyphicon glyphicon-info-sign" data-tooltip="Required. This field indicates the geographical location of the item. This is combined with the value specified for Country automatically to create the Item Location on your listing. Enter the City and State information."></span>
+        </label>
         <select data-id="61" id="location" class="input-field">
             <option></option>
             <option>Riverview, Florida, 33511, United States</option>
@@ -275,17 +338,25 @@
             <option>No</option>
         </select>
         <div id="policy-yes" style="display: none;">
-            <label for="shipping-policy">Shipping Policy Name</label>
+            <label for="shipping-policy">Shipping Policy Name
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Required when opted into eBay Business Policies. This field specifies which shipping business policy a seller has chosen to use in the listing."></span>
+            </label>
             <input data-id="75" id="shipping-policy" class="input-field" type="text">
 
-            <label for="return-policy">Shipping Policy Name</label>
+            <label for="return-policy">Return Policy Name
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Required when opted into eBay Business Policies. This field specifies which return business policy a seller has chosen to use in the listing."></span>
+            </label>
             <input data-id="76" id="return-policy" class="input-field" type="text">
 
-            <label for="payment-policy">Shipping Policy Name</label>
+            <label for="payment-policy">Payment Policy Name
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Required when opted into eBay Business Policies and eBay Payments. This field identifies the payment business policy to use in the listing. Sellers will be able to add Immediate pay required; Cash on Pickup etc on their Payment policy."></span>
+            </label>
             <input data-id="77" id="payment-policy" class="input-field" type="text">
         </div>
         <div id="policy-no" style="display: none;">
-            <label for="shipping-type">Shipping Type</label>
+            <label for="shipping-type">Shipping Type
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of fee charged for shipping."></span>
+            </label>
             <select data-id="62" id="shipping-type" class="input-field">
                 <option></option>
                 <option>Flat</option>
@@ -293,17 +364,23 @@
                 <option>No shipping</option>
             </select>
 
-            <label for="dispatch">Max Dispatch Time (days)</label>
+            <label for="dispatch">Max Dispatch Time (days)
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Required if not opted into eBay Business Policies. This field indicates the maximum number of business days specified as your handling time. The clock starts ticking when the buyer pays for the order. A Max dispatch time value of 0 indicates same day handling for an item. A Max dispatch time value of 1 indicates next day handling for an item. i.e. a buyer pays for the order on a Wednesday, the seller would have to ship the item by the next day (Thursday)."></span>
+            </label>
             <input data-id="67" id="dispatch" class="input-field" type="number">
 
-            <label for="returns-accepted">Returns Accepted Option</label>
+            <label for="returns-accepted">Returns Accepted Option
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Required to use this field when not opted into eBay Business Policies. The field indicates that a buyer has the option of returning the item or not."></span>
+            </label>
             <select data-id="70" id="returns-accepted" class="input-field">
                 <option></option>
                 <option>ReturnsAccepted</option>
                 <option>ReturnsNotAccepted</option>
             </select>
             <div id="returns" style="display: none;">
-                <label for="returns-option">Returns Within Option</label>
+                <label for="returns-option">Returns Within Option
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip="Required to use this field when not opted into eBay Business Policies and when using Returns accepted option. This field defines the length of time a buyer has in which to notify a seller of their intent to return an item."></span>
+                </label>
                 <select data-id="71" id="returns-option" class="input-field">
                     <option></option>
                     <option>14 days</option>
@@ -311,7 +388,9 @@
                     <option>60 days</option>
                 </select>
 
-                <label for="refund-option">Refund Option</label>
+                <label for="refund-option">Refund Option
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip="Required to use when not opted into eBay Business Policies and when using Returns accepted option. This field defines how the buyer is to be compensated by the seller for a returned item."></span>
+                </label>
                 <select data-id="72" id="refund-option" class="input-field">
                     <option></option>
                     <option>MoneyBack</option>
@@ -319,7 +398,9 @@
                     <option>MoneyBackOrReplacement</option>
                 </select>
 
-                <label for="shipping-paid-by">Return Shipping Paid By:</label>
+                <label for="shipping-paid-by">Return Shipping Paid By:
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip="Required to use this field when not opted into eBay Business Policies and when using Returns accepted option. It specifies who will pay to return the item. If Buyer is indicated, it means the Buyer would pay to return the item. If Seller is indicated, the Seller would pay to return the item."></span>
+                </label>
                 <select data-id="73" id="shipping-paid-by" class="input-field">
                     <option></option>
                     <option>Buyer</option>
@@ -328,10 +409,14 @@
             </div>
             <h4>Domestic Shipping</h4>
 
-            <label for="shipping-cost1">Shipping Cost</label>
+            <label for="shipping-cost1">Shipping Cost
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Required when not opted into eBay Business Policies. This field identifies the cost to ship the item with the selected shipping service."></span>
+            </label>
             <input data-id="64" id="shipping-cost1" class="input-field" type="number">
 
-            <label for="shipping-service1">Shipping Service</label>
+            <label for="shipping-service1">Shipping Service
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Required to use when not opted into eBay Business Policies. A domestic shipping service that can be selected by the buyer. For example, for USPS priority mail, you would use USPSPriority."></span>
+            </label>
             <select data-id="63" id="shipping-service1" class="input-field">
                 <option></option>
                 <option>USPSExpressFlatRateEnvelope</option>
@@ -344,10 +429,14 @@
 
             <h4>International Shipping</h4>
 
-            <label for="shipping-cost2">Shipping Cost</label>
+            <label for="shipping-cost2">Shipping Cost
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Optional to use when not opted into eBay Business Policies. Cost to ship the item with the second shipping service if the buyer chooses the second option."></span>
+            </label>
             <input data-id="66" id="shipping-cost2" class="input-field" type="number">
 
-            <label for="shipping-service2">Shipping Service</label>
+            <label for="shipping-service2">Shipping Service
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Optional to use when not opted into eBay Business Policies. A second domestic shipping service gives your buyer more shipping options to choose from."></span>
+            </label>
             <select data-id="65" id="shipping-service2" class="input-field">
                 <option></option>
                 <option>USPSExpressMailInternational</option>
@@ -355,7 +444,9 @@
                 <option>Enter your own</option>
             </select>
 
-            <label for="additional-details">Additional Details</label>
+            <label for="additional-details">Additional Details
+                <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
+            </label>
             <input data-id="74" id="additional-details" class="input-field" type="text">
         </div>
 
@@ -364,16 +455,24 @@
             <input type="checkbox" id="additional-shipping-checkbox">
         </label>
         <div id="additional-shipping" style="display: none;">
-            <label for="shipping-promotion">Promotional Shipping Discount</label>
+            <label for="shipping-promotion">Promotional Shipping Discount
+                <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
+            </label>
             <input data-id="68" id="hipping-promotion" class="input-field" type="text">
 
-            <label for="shipping-discount">Shipping Discount Profile ID</label>
+            <label for="shipping-discount">Shipping Discount Profile ID
+                <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
+            </label>
             <input data-id="69" id="shipping-discount" class="input-field" type="text">
 
-            <label for="takeback-policy">Take Back Policy ID</label>
+            <label for="takeback-policy">Take Back Policy ID
+                <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
+            </label>
             <input data-id="78" id="takeback-policy" class="input-field" type="text">
 
-            <label for="product-policy">Product Compliance Policy ID</label>
+            <label for="product-policy">Product Compliance Policy ID
+                <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
+            </label>
             <input data-id="79" id="product-policy" class="input-field" type="text">
         </div>
 
@@ -384,13 +483,19 @@
         </label>
         <div id="additional-options" style="display: none;">
 
-            <label for="features">Features</label>
+            <label for="features">Features
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Secondary attributes or functions that are not essential to the main function of the product"></span>
+            </label>
             <input data-id="14" id="features" class="input-field" type="text">
 
-            <label for="card-number">Card Number</label>
+            <label for="card-number">Card Number
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Unique number identifier assigned to the card within a product set, assigned by the manufacturer"></span>
+            </label>
             <input data-id="25" id="card-number" class="input-field" type="text">
 
-            <label for="rarity">Rarity</label>
+            <label for="rarity">Rarity
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Level of rarity the card has"></span>
+            </label>
             <select data-id="18" id="rarity" class="input-field">
                 <option></option>
                 <option>Common</option>
@@ -400,7 +505,9 @@
                 <option>Enter your own</option>
             </select>
 
-            <label for="finish">Finish</label>
+            <label for="finish">Finish
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of finish style of the product"></span>
+            </label>
             <select data-id="19" id="finish" class="input-field">
                 <option></option>
                 <option>Foil</option>
@@ -409,14 +516,18 @@
                 <option>Enter your own</option>
             </select>
 
-            <label for="manufacturer">Manufacturer</label>
+            <label for="manufacturer">Manufacturer
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Manufacturer or brand of the product"></span>
+            </label>
             <select data-id="20" id="manufacturer" class="input-field">
                 <option></option>
                 <option>Wizards of the Coast</option>
                 <option>Enter your own</option>
             </select>
 
-            <label for="graded">*Graded</label>
+            <label for="graded">*Graded
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Whether the condition of the product has been authenticated by a professional grading company"></span>
+            </label>
             <select data-id="10" id="graded" class="input-field">
                 <option></option>
                 <option>Yes</option>
@@ -424,7 +535,9 @@
             </select>
 
             <div id="graded-yes" style="display: none;">
-                <label for="grade">Grade</label>
+                <label for="grade">Grade
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip="Value used to determine the product's condition from lowest to highest quality, verified by a professional grading company"></span>
+                </label>
                 <select data-id="17" id="grade" class="input-field">
                     <option></option>
                     <option>10</option>
@@ -448,26 +561,40 @@
                     <option>1</option>
                 </select>
 
-                <label for="grader">Professional Grader</label>
+                <label for="grader">Professional Grader
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip="Name of the third-party authentication service company that verifies and grades the product"></span>
+                </label>
                 <input data-id="22" id="grader" class="input-field" type="text">
 
-                <label for="cert-number">Certification Number</label>
+                <label for="cert-number">Certification Number
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip="Unique identifier assigned to the professionally graded product, set by the professional grading company"></span>
+                </label>
                 <input data-id="26" id="cert-number" class="input-field" type="text">
             </div>
 
-            <label for="custom-label">Custom Label</label>
+            <label for="custom-label">Custom Label
+                <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
+            </label>
             <input data-id="1" id="custom-label" class="input-field" type="text">
 
-            <label for="store-categoty">Store Category</label>
+            <label for="store-categoty">Store Category
+                <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
+            </label>
             <input data-id="3" id="store-category" class="input-field" type="text">
 
-            <label for="relationship">Store Category</label>
+            <label for="relationship">Relationship
+                <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
+            </label>
             <input data-id="6" id="relationship" class="input-field" type="text">
 
-            <label for="relationship-details">Store Category</label>
+            <label for="relationship-details">Relationship Details
+                <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
+            </label>
             <input data-id="7" id="relationship-details" class="input-field" type="text">
 
-            <label for="autographed">Autographed</label>
+            <label for="autographed">Autographed
+                <span class="glyphicon glyphicon-info-sign" data-tooltip="Whether the product is signed or autographed"></span>
+            </label>
             <select data-id="24" id="autographed" class="input-field">
                 <option></option>
                 <option>Yes</option>
@@ -475,16 +602,24 @@
             </select>
 
             <div id="autographed-yes" style="display: none;">
-                <label for="signed">Signed By</label>
+                <label for="signed">Signed By
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip="Name of the person or character who signed or autographed the product"></span>
+                </label>
                 <input data-id="37" id="signed" class="input-field" type="text">
 
-                <label for="autograph-auth">Autograph Authentication</label>
+                <label for="autograph-auth">Autograph Authentication
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip="Name of the person or character who signed or autographed the product"></span>
+                </label>
                 <input data-id="38" id="Autograph Authentication" class="input-field" type="text">
 
-                <label for="auto-auth-number">Autograph Authentication Number</label>
+                <label for="auto-auth-number">Autograph Authentication Number
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip="Unique identifier assigned to the autograph existing on the product, set by the professional authentication company"></span>
+                </label>
                 <input data-id="47" id="auto-auth-number" class="input-field" type="text">
 
-                <label for="autograph-format">Autograph Format</label>
+                <label for="autograph-format">Autograph Format
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip="Format of the autograph applied to the product"></span>
+                </label>
                 <select data-id="39" id="autograph-format" class="input-field">
                     <option></option>
                     <option>Cut</option>
@@ -493,7 +628,9 @@
                     <option>Enter your own</option>
                 </select>
 
-                <label for="age-level">Age Level</label>
+                <label for="age-level">Age Level
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
+                </label>
                 <select data-id="28" id="age-level" class="input-field">
                     <option></option>
                     <option>4+</option>
@@ -505,14 +642,18 @@
                     <option>Enter your own</option>
                 </select>
 
-                <label for="language">Language</label>
+                <label for="language">Language
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
+                </label>
                 <select data-id="29" id="language" class="input-field">
                     <option></option>
                     <option>English</option>
                     <option>Japanese</option>
                 </select>
 
-                <label for="card-size">Card Size</label>
+                <label for="card-size">Card Size
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
+                </label>
                 <select data-id="30" id="card-size" class="input-field">
                     <option></option>
                     <option>Standard</option>
@@ -521,13 +662,17 @@
                     <option>Enter your own</option>
                 </select>
 
-                <label for="manu-year">Year Manufactured</label>
+                <label for="manu-year">Year Manufactured
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
+                </label>
                 <input data-id="31" id="manu-year" class="input-field" type="number">
 
                 <label for="event">Convention/Event</label>
                 <input data-id="34" id="event" class="input-field" type="text">
 
-                <label for="material">Material</label>
+                <label for="material">Material
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
+                </label>
                 <select data-id="33" id="material" class="input-field">
                     <option></option>
                     <option>Card Stock</option>
@@ -535,14 +680,18 @@
                     <option>Enter your own</option>
                 </select>
 
-                <label for="vintage">Vintage</label>
+                <label for="vintage">Vintage
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
+                </label>
                 <select data-id="35" id="vintage" class="input-field">
                     <option></option>
                     <option>Yes</option>
                     <option>No</option>
                 </select>
 
-                <label for="region">Country/Region of Manufacture</label>
+                <label for="region">Country/Region of Manufacture
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
+                </label>
                 <select data-id="36" id="region" class="input-field">
                     <option></option>
                     <option>United States</option>
@@ -550,13 +699,19 @@
                     <option>Enter your own</option>
                 </select>
 
-                <label for="illustrator">Illustrator</label>
+                <label for="illustrator">Illustrator
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
+                </label>
                 <input data-id="40" id="illustrator" class="input-field" type="text">
 
-                <label for="hp">HP</label>
+                <label for="hp">HP
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
+                </label>
                 <input data-id="41" id="hp" class="input-field" type="text">
 
-                <label for="bundle">Custom Bundle</label>
+                <label for="bundle">Custom Bundle
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
+                </label>
                 <select data-id="42" id="bundle" class="input-field">
                     <option></option>
                     <option>No</option>
@@ -566,19 +721,29 @@
                     <input data-id="48" id="bundle-descrip" class="input-field" type="text">
                 </div>
 
-                <label for="ap">Attack/Power</label>
+                <label for="ap">Attack/Power
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
+                </label>
                 <input data-id="43" id="ap" class="input-field" type="text">
 
-                <label for="dt">Defense/Toughness</label>
+                <label for="dt">Defense/Toughness
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
+                </label>
                 <input data-id="44" id="dt" class="input-field" type="text">
 
-                <label for="california">California Prop 65 Warning</label>
+                <label for="california">California Prop 65 Warning
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
+                </label>
                 <input data-id="45" id="california" class="input-field" type="text">
 
-                <label for="cost">Cost</label>
+                <label for="cost">Cost
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
+                </label>
                 <input data-id="46" id="cost" class="input-field" type="text">
 
-                <label for="gallery">Gallery Type</label>
+                <label for="gallery">Gallery Type
+                    <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
+                </label>
                 <input data-id="50" id="gallery" class="input-field" type="text">
 
             </div>
@@ -597,4 +762,5 @@
 
 {% block script %}
     <script src="{% static 'BulkLister/index.js' %}"></script>
+    <script src="{% static 'BulkLister/tooltip.js' %}"></script>
 {% endblock %}

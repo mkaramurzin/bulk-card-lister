@@ -138,13 +138,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     // info icons
-    document.querySelectorAll('.glyphicon glyphicon-info-sign').forEach(icon => {
-        if(icon.id === 'i-game') {
-            icon.addEventListener('click', function() {
-                alert("Name of the game the product belongs to or is compatible with");
-            })
-        }
-    })
+    $(document).ready(function() {
+        $('#txtName').tooltip();
+    });
 
 })
 
