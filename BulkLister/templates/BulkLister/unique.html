@@ -791,7 +791,7 @@
 
     <button id="next" class="btn btn-secondary">Next Listing</button>
     <!-- <button id="finish" class="btn btn-primary">Finish</button> -->
-    <a href="{% url 'download' id=session %}">
+    <a>
         <button id="finish" class="btn btn-primary">Finish</button>
     </a>
 
@@ -799,6 +799,5 @@
 {% endblock %}
 
 {% block script %}
-    <script src="{% static 'BulkLister/test.js' %}"></script>
-    <script src="{% static 'BulkLister/tooltip.js' %}"></script>
+    <script src="{% static 'BulkLister/unique.js' %}"></script>
 {% endblock %}
