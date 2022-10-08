@@ -2,5 +2,11 @@
 {% load static %}
 
 {% block body %}
-    <h1>TEST</h1>
+    <label for="action">*Action
+        <span class="glyphicon glyphicon-info-sign" data-tooltip="Action will post new listings to eBay."></span>
+    </label>
+    <select data-id="0" id="action" class="input-field">
+        <option>{{ a.0 }}</option>
+        <option>Add</option>
+    </select>
 {% endblock %}

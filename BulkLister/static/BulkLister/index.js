@@ -46,6 +46,61 @@ document.addEventListener('DOMContentLoaded', function() {
         // location.href = `unique/${id}`;
     };
 
+    // finish
+    document.querySelector('#finish-button').onclick = function() {
+        var array = []
+        document.querySelectorAll('.input-field').forEach(field => {
+            let index = field.dataset.id;
+            let val = field.value;
+            var item = [index, val]
+            array.push(item)
+        })
+
+        fetch('finish', {
+            method: 'POST',
+            body: JSON.stringify({
+                array: array,
+                session_id: document.querySelector('#session-id').value
+            })
+        })
+        .then(response => response.json())
+        .then(result => {
+            // document.querySelector('#session-id').value = result.id;
+            let id = document.querySelector('#session-id').value;
+            location.href = `download/${id}`;
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
+    // next listing
+    document.querySelector('#next').onclick = function() {
+        var array = []
+        document.querySelectorAll('.input-field').forEach(field => {
+            let index = field.dataset.id;
+            let val = field.value;
+            var item = [index, val]
+            array.push(item)
+        })
+
+        fetch('finish', {
+            method: 'POST',
+            body: JSON.stringify({
+                array: array,
+                session_id: document.querySelector('#session-id').value
+            })
+        })
+        .then(response => response.json())
+        .then(result => {
+            let id = document.querySelector('#session-id').value;
+            location.href = `/unique/${id}`;
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
     // Card is graded
     document.querySelector("#graded").addEventListener('change', function() {
         let select = document.querySelector('#graded')
@@ -136,56 +191,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     })
 
-
+    // name tamplate
+    document.querySelector('#save-btn').addEventListener('click', function() {
+        let name = prompt("Name your template:", "");
+        document.querySelector('#save').value = name;
+        document.getElementById('save-btn').className = 'btn btn-success';
+    })
 
 })
-
-// async function StaticContinue() {
-    
-//     document.querySelectorAll('.input-field').forEach(async field => {
-//         // const sleep = (milliseconds) => {
-//         //     return new Promise(resolve => setTimeout(resolve, milliseconds))
-//         // }
-//         // fetch('/input', {
-//         //     method: 'POST',
-//         //     body: JSON.stringify({
-//         //         input: field.value,
-//         //         index: field.dataset.id,
-//         //         session_id: document.querySelector('#session-id').value
-//         //     })
-//         // })
-//         // await sleep(1000)
-//         // .then(response => response.json())
-//         // .then(result => {
-//         //     // console.log(result.id)
-//             // if("error" in result) {
-//             //     // error
-//             //     alert(result['error'])
-//             // } else {
-//             //     document.querySelector('#session-id').value = result.id;
-//             // }
-//         // })
-//         // .catch(error => {
-//         //     console.log(error);
-//         // });
-//         const response = await fetch('/input', {
-//             method: 'POST',
-//             body: JSON.stringify({
-//                 input: field.value,
-//                 index: field.dataset.id,
-//                 session_id: document.querySelector('#session-id').value
-//             })
-//         })
-//         const json = await response.json();
-//         console.log(json);
-//         if("error" in json) {
-//             // error
-//             alert(json['error'])
-//         } else {
-//             document.querySelector('#session-id').value = json.id;
-//         }
-//     })
-// }
 
 function StaticContinue() {
     var array = []
@@ -195,19 +208,17 @@ function StaticContinue() {
         var item = [index, val]
         array.push(item)
     })
-    console.log(array)
     fetch('input', {
         method: 'POST',
         body: JSON.stringify({
-            array: array
+            array: array,
+            template: document.querySelector('#save').value
         })
     })
     .then(response => response.json())
     .then(result => {
-        console.log(result) 
         document.querySelector('#session-id').value = result.id;
         let id = document.querySelector('#session-id').value;
-        console.log(id)
         location.href = `unique/${id}`;
     })
     .catch(error => {

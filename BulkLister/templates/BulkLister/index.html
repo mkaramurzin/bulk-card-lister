@@ -3,7 +3,13 @@
 
 {% block body %} 
     <section class="form-section">
-        <h3 class="title">Enter static listing info</h3>
+        {% if saved %} 
+            <h3 class="title">Edit static listing info</h3>
+        {% elif unique %}
+            <h3 class="title">Enter listing info</h3>
+        {% else %}
+            <h3 class="title">Enter static listing info</h3>
+        {% endif %}
 
         <div class="div-tooltip"></div>
         
@@ -21,18 +27,18 @@
         <label for="title">*Title 
             <span class="glyphicon glyphicon-info-sign" data-tooltip="A descriptive title helps buyers find your item. State exactly what your item is. Include words that buyers will use to search for your item."></span>
         </label>
-        <input data-id="4" id="title" type="text" class="input-field">
+        <input data-id="4" id="title" type="text" class="input-field" value="{{ array.1 }}">
 
         <label for="subtitle">Subtitle
             <span class="glyphicon glyphicon-info-sign" data-tooltip="A descriptive title helps buyers find your item. State exactly what your item is. Include words that buyers will use to search for your item."></span>
         </label>
-        <input data-id="5" id="subtitle" type="text" class="input-field">
+        <input data-id="5" id="subtitle" type="text" class="input-field" value="{{ array.2 }}">
 
         <label for="condition">Condition 
             <span class="glyphicon glyphicon-info-sign" data-tooltip="Select the condition of the item you're listing."></span>
         </label>
         <select data-id="8" id="condition" class="input-field">
-            <option></option>
+            <option>{{ array.3 }}</option>
             <option>New</option>
             <option>Like New</option>
             <option>Used</option>
@@ -41,13 +47,13 @@
         <label for="photos">*Photos <a href="https://imgbb.com/" target="_blank">(upload and copy url) </a>
             <span class="glyphicon glyphicon-info-sign" data-tooltip="URL of the image to add to your listing. For best results, use an image that is in .jpg format and is at least 1000 pixels on the longest side."></span>
         </label>
-        <input data-id="49" id="photos" class="input-field" type="text">
+        <input data-id="49" id="photos" class="input-field" type="text" value="{{ array.4 }}">
 
         <label for="game">*Game 
             <span class="glyphicon glyphicon-info-sign" data-tooltip="Name of the game the product belongs to or is compatible with"></span>
         </label>
         <select data-id="9" id="game" class="input-field">
-            <option></option>
+            <option>{{ array.5 }}</option>
             <option id="game-option">Pokemon TCG</option>
             <option id="game-option">Magic: The Gathering</option>
         </select>
@@ -57,7 +63,7 @@
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of action the character on the card or the card itself has"></span>
             </label>
             <select data-id="12" id="mtg-card-type" class="input-field">
-                <option></option>
+                <option>{{ array.6 }}</option>
                 <option class="ct-option">Creature</option>
                 <option class="ct-option">Instant</option>
                 <option class="ct-option">Sorcery</option>
@@ -71,18 +77,18 @@
             <label for="mtg-spec">Speciality
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of special variance the Pokémon character or species has"></span>
             </label>
-            <input data-id="27" id="mtg-spec" type="text" class="input-field">
+            <input data-id="27" id="mtg-spec" type="text" class="input-field" value="{{ array.7 }}">
 
             <label for="mtg-stage">Stage
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of evolution stage of the Pokémon or Digimon character"></span>
             </label>
-            <input data-id="32" id="mtg-stage" type="text" class="input-field">
+            <input data-id="32" id="mtg-stage" type="text" class="input-field" value="{{ array.8 }}">
 
             <label for="mtg-set">Set
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Name of the set the product belongs to"></span>
             </label>
             <select data-id="15" id="mtg-set" class="input-field">
-                <option></option>
+                <option>{{ array.9 }}</option>
                 <option>Dominaria United</option>
                 <option>Streets of New Capenna</option>
                 <option>Kamigawa: Neon Dynasty</option>
@@ -98,7 +104,7 @@
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of action the character on the card or the card itself has"></span>
             </label>
             <select data-id="12" id="pokemon-card-type" class="input-field">
-                <option></option>
+                <option>{{ array.10 }}</option>
                 <option class="ct-option">Energy-Basic</option>
                 <option class="ct-option">Energy-Special</option>
                 <option class="ct-option">Pokémon</option>
@@ -116,7 +122,7 @@
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of special variance the Pokémon character or species has"></span>
             </label>
             <select data-id="27" id="pokemon-spec" class="input-field">
-                <option></option>
+                <option>{{ array.11 }}</option>
                 <option>BREAK</option>
                 <option>EX</option>
                 <option>GX</option>
@@ -136,7 +142,7 @@
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of evolution stage of the Pokémon or Digimon character"></span>
             </label>
             <select data-id="32" id="pokemon-stage" class="input-field">
-                <option></option>
+                <option>{{ array.12 }}</option>
                 <option>Basic</option>
                 <option>Stage 1</option>
                 <option>Stage 2</option>
@@ -147,7 +153,7 @@
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Name of the set the product belongs to"></span>
             </label>
             <select data-id="15" id="pokemon-set" class="input-field">
-                <option></option>
+                <option>{{ array.13 }}</option>
                 <option>Hidden Fates</option>
                 <option>Brilliant Stars</option>
                 <option>Shining Fates</option>
@@ -170,7 +176,7 @@
             <span class="glyphicon glyphicon-info-sign" data-tooltip="Whether the condition of the product has been authenticated by a professional grading company"></span>
         </label>
         <select data-id="10" id="graded" class="input-field">
-            <option></option>
+            <option>{{ array.14 }}</option>
             <option>Yes</option>
             <option>No</option>
         </select>
@@ -180,7 +186,7 @@
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Value used to determine the product's condition from lowest to highest quality, verified by a professional grading company"></span>
             </label>
             <select data-id="17" id="grade" class="input-field">
-                <option></option>
+                <option>{{ array.15 }}</option>
                 <option>10</option>
                 <option>9.5</option>
                 <option>9</option>
@@ -205,19 +211,19 @@
             <label for="grader">Professional Grader
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Name of the third-party authentication service company that verifies and grades the product"></span>
             </label>
-            <input data-id="22" id="grader" class="input-field" type="text">
+            <input data-id="22" id="grader" class="input-field" type="text" value="{{ array.16 }}">
 
             <label for="cert-number">Certification Number
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Unique identifier assigned to the professionally graded product, set by the professional grading company"></span>
             </label>
-            <input data-id="26" id="cert-number" class="input-field" type="text">
+            <input data-id="26" id="cert-number" class="input-field" type="text" value="{{ array.17 }}">
         </div>
 
         <label for="card-condition">Card Condition
             <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of physical condition of only ungraded cards. This is not in reference to professional grading standards and grading references are not tolerated. Graded cards are to be listed as a graded card along with their grade, professional grader, and certification number. Item condition should be described conservatively in order to avoid returns on the basis that the item is not as described. For additional information on each card condition, go to www.ebay.com/cardconditions."></span>
         </label>
         <select data-id="23" id="card-condition" class="input-field">
-            <option></option>
+            <option>{{ array.18 }}</option>
             <option>Near Mint or Better</option>
             <option>Lightly Played (Excellent)</option>
             <option>Moderately Played (Very Good)</option>
@@ -227,18 +233,18 @@
         <label for="card-name">Card name
             <span class="glyphicon glyphicon-info-sign" data-tooltip="Name of the recognized character or scene summary on the card"></span>
         </label>
-        <input data-id="11" id="card-name" class="input-field" type="text">
+        <input data-id="11" id="card-name" class="input-field" type="text" value="{{ array.19 }}">
 
         <label for="character">Character
             <span class="glyphicon glyphicon-info-sign" data-tooltip="Recognized character that the product has on itself or on the packaging. For example, Character: Chewbacca"></span>
         </label>
-        <input data-id="13" id="character" class="input-field" type="text">
+        <input data-id="13" id="character" class="input-field" type="text" value="{{ array.20 }}">
 
         <label for="color">Attribute/MTG:Color
             <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of property, energy or trait the character on the card or the card itself has"></span>
         </label>
         <select data-id="16" id="color" class="input-field">
-            <option></option>
+            <option>{{ array.21 }}</option>
             <option>Multi-Color</option>
             <option>Earth</option>
             <option>Red</option>
@@ -272,7 +278,7 @@
             <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of creature or monster on the card or the card itself has"></span>
         </label>
         <select data-id="21" id="creature-type" class="input-field">
-            <option></option>
+            <option>{{ array.22 }}</option>
             <option>Beast</option>
             <option>Elf</option>
             <option>Clerics</option>
@@ -289,7 +295,7 @@
         <label for="description">*Description
             <span class="glyphicon glyphicon-info-sign" data-tooltip="Describe the item you're selling and provide complete and accurate details. Use a clear and concise format to keep your description mobile-friendly."></span>
         </label>
-        <input data-id="51" id="description" class="input-field" type="text">
+        <input data-id="51" id="description" class="input-field" type="text" value="{{ array.23 }}">
 
         <!-- Selling details -->
 
@@ -298,7 +304,7 @@
             <span class="glyphicon glyphicon-info-sign" data-tooltip="Select how you want to sell the items you're listing."></span>
         </label>
         <select data-id="52" id="format" class="input-field">
-            <option></option>
+            <option>{{ array.24 }}</option>
             <option>Auction-style</option>
             <option>Fixed price</option>
         </select>
@@ -307,7 +313,7 @@
             <span class="glyphicon glyphicon-info-sign" data-tooltip="Select how long your listing will run. If your item doesn't sell, you can choose to relist it."></span>
         </label>
         <select data-id="53" id="duration" class="input-field">
-            <option></option>
+            <option>{{ array.25 }}</option>
             <option>3 days</option>
             <option>5 days</option>
             <option>7 days</option>
@@ -317,17 +323,17 @@
         <label for="starting-price">*Starting price
             <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
         </label>
-        <input data-id="54" id="starting-price" class="input-field" type="number">
+        <input data-id="54" id="starting-price" class="input-field" type="number" value="{{ array.26 }}">
 
         <label for="buy-now-price">Buy It Now price 
             <span class="glyphicon glyphicon-info-sign" data-tooltip="Optional. This field indicates the price that is required to immediately buy an auction-style format item. You will need to define the price you are willing to accept for the item, which will in turn immediately end the auction. This field option is not valid for a “Fixed price” format item."></span>
         </label>
-        <input data-id="55" id="buy-now-price" class="input-field" type="number">
+        <input data-id="55" id="buy-now-price" class="input-field" type="number" value="{{ array.27 }}">
 
         <label for="quantity">Quantity
             <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
         </label>
-        <input data-id="56" id="quantity" class="input-field" type="number">
+        <input data-id="56" id="quantity" class="input-field" type="number" value="{{ array.28 }}">
 
         <label for="additional-selling">Additional selling details
             <input type="checkbox" id="additional-selling">
@@ -337,7 +343,7 @@
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Required to use only if you are not yet opted into eBay Payments or Business Policies."></span>
             </label>
             <select data-id="57" id="paypal-accepted" class="input-field">
-                <option></option>
+                <option>{{ array.29 }}</option>
                 <option>Yes</option>
                 <option>No</option>
             </select>
@@ -346,14 +352,14 @@
                 <label for="paypal-email">PayPal email address
                     <span class="glyphicon glyphicon-info-sign" data-tooltip="Required to use only if you have not yet opted into eBay Payments or Business Policies. When you accept PayPal, you must also provide the email address associated with your PayPal account."></span>
                 </label>
-                <input data-id="58" id="paypal-email" class="input-field" type="text">
+                <input data-id="58" id="paypal-email" class="input-field" type="text" value="{{ array.30 }}">
             </div>
 
             <label for="immediate-pay">Immediate Pay Required
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Optional. Indicates that immediate payment is required from the buyer. This field is used to require that an item be paid for before it is considered closed and purchased. This field is supported for Premier and Business PayPal accounts only."></span>
             </label>
             <select data-id="59" id="immediate-pay" class="input-field">
-                <option></option>
+                <option>{{ array.31 }}</option>
                 <option>Yes</option>
                 <option>No</option>
             </select>
@@ -361,7 +367,7 @@
             <label for="payment-instructions">Payment Instructions
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Optional. Use this field if you have other instructions for your buyers."></span>
             </label>
-            <input data-id="60" id="payment-instructions" class="input-field" type="text">
+            <input data-id="60" id="payment-instructions" class="input-field" type="text" value="{{ array.32 }}">
         </div>
 
         <!-- Shipping details -->
@@ -371,7 +377,7 @@
             <span class="glyphicon glyphicon-info-sign" data-tooltip="Required. This field indicates the geographical location of the item. This is combined with the value specified for Country automatically to create the Item Location on your listing. Enter the City and State information."></span>
         </label>
         <select data-id="61" id="location" class="input-field">
-            <option></option>
+            <option>{{ array.33 }}</option>
             <option>Riverview, Florida, 33511, United States</option>
             <option>Redmond, Washington, 98052, United States</option>
             <option>Enter your own</option>
@@ -388,24 +394,24 @@
             <label for="shipping-policy">Shipping Policy Name
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Required when opted into eBay Business Policies. This field specifies which shipping business policy a seller has chosen to use in the listing."></span>
             </label>
-            <input data-id="75" id="shipping-policy" class="input-field" type="text">
+            <input data-id="75" id="shipping-policy" class="input-field" type="text" value="{{ array.34 }}">
 
             <label for="return-policy">Return Policy Name
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Required when opted into eBay Business Policies. This field specifies which return business policy a seller has chosen to use in the listing."></span>
             </label>
-            <input data-id="76" id="return-policy" class="input-field" type="text">
+            <input data-id="76" id="return-policy" class="input-field" type="text" value="{{ array.35 }}">
 
             <label for="payment-policy">Payment Policy Name
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Required when opted into eBay Business Policies and eBay Payments. This field identifies the payment business policy to use in the listing. Sellers will be able to add Immediate pay required; Cash on Pickup etc on their Payment policy."></span>
             </label>
-            <input data-id="77" id="payment-policy" class="input-field" type="text">
+            <input data-id="77" id="payment-policy" class="input-field" type="text" value="{{ array.36 }}">
         </div>
         <div id="policy-no" style="display: none;">
             <label for="shipping-type">Shipping Type
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of fee charged for shipping."></span>
             </label>
             <select data-id="62" id="shipping-type" class="input-field">
-                <option></option>
+                <option>{{ array.37 }}</option>
                 <option>Flat</option>
                 <option>Calculated</option>
                 <option>No shipping</option>
@@ -414,13 +420,13 @@
             <label for="dispatch">Max Dispatch Time (days)
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Required if not opted into eBay Business Policies. This field indicates the maximum number of business days specified as your handling time. The clock starts ticking when the buyer pays for the order. A Max dispatch time value of 0 indicates same day handling for an item. A Max dispatch time value of 1 indicates next day handling for an item. i.e. a buyer pays for the order on a Wednesday, the seller would have to ship the item by the next day (Thursday)."></span>
             </label>
-            <input data-id="67" id="dispatch" class="input-field" type="number">
+            <input data-id="67" id="dispatch" class="input-field" type="number" value="{{ array.38 }}">
 
             <label for="returns-accepted">Returns Accepted Option
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Required to use this field when not opted into eBay Business Policies. The field indicates that a buyer has the option of returning the item or not."></span>
             </label>
             <select data-id="70" id="returns-accepted" class="input-field">
-                <option></option>
+                <option>{{ array.39 }}</option>
                 <option>ReturnsAccepted</option>
                 <option>ReturnsNotAccepted</option>
             </select>
@@ -429,7 +435,7 @@
                     <span class="glyphicon glyphicon-info-sign" data-tooltip="Required to use this field when not opted into eBay Business Policies and when using Returns accepted option. This field defines the length of time a buyer has in which to notify a seller of their intent to return an item."></span>
                 </label>
                 <select data-id="71" id="returns-option" class="input-field">
-                    <option></option>
+                    <option>{{ array.40 }}</option>
                     <option>14 days</option>
                     <option>30 days</option>
                     <option>60 days</option>
@@ -439,7 +445,7 @@
                     <span class="glyphicon glyphicon-info-sign" data-tooltip="Required to use when not opted into eBay Business Policies and when using Returns accepted option. This field defines how the buyer is to be compensated by the seller for a returned item."></span>
                 </label>
                 <select data-id="72" id="refund-option" class="input-field">
-                    <option></option>
+                    <option>{{ array.41 }}</option>
                     <option>MoneyBack</option>
                     <option>MoneyBackOrExchange</option>
                     <option>MoneyBackOrReplacement</option>
@@ -449,7 +455,7 @@
                     <span class="glyphicon glyphicon-info-sign" data-tooltip="Required to use this field when not opted into eBay Business Policies and when using Returns accepted option. It specifies who will pay to return the item. If Buyer is indicated, it means the Buyer would pay to return the item. If Seller is indicated, the Seller would pay to return the item."></span>
                 </label>
                 <select data-id="73" id="shipping-paid-by" class="input-field">
-                    <option></option>
+                    <option>{{ array.42 }}</option>
                     <option>Buyer</option>
                     <option>Seller</option>
                 </select>
@@ -459,13 +465,13 @@
             <label for="shipping-cost1">Shipping Cost
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Required when not opted into eBay Business Policies. This field identifies the cost to ship the item with the selected shipping service."></span>
             </label>
-            <input data-id="64" id="shipping-cost1" class="input-field" type="number">
+            <input data-id="64" id="shipping-cost1" class="input-field" type="number" value="{{ array.43 }}">
 
             <label for="shipping-service1">Shipping Service
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Required to use when not opted into eBay Business Policies. A domestic shipping service that can be selected by the buyer. For example, for USPS priority mail, you would use USPSPriority."></span>
             </label>
             <select data-id="63" id="shipping-service1" class="input-field">
-                <option></option>
+                <option>{{ array.44 }}</option>
                 <option>USPSExpressFlatRateEnvelope</option>
                 <option>USPSExpressMail</option>
                 <option>USPSFirstClass</option>
@@ -479,13 +485,13 @@
             <label for="shipping-cost2">Shipping Cost
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Optional to use when not opted into eBay Business Policies. Cost to ship the item with the second shipping service if the buyer chooses the second option."></span>
             </label>
-            <input data-id="66" id="shipping-cost2" class="input-field" type="number">
+            <input data-id="66" id="shipping-cost2" class="input-field" type="number" value="{{ array.45 }}">
 
             <label for="shipping-service2">Shipping Service
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Optional to use when not opted into eBay Business Policies. A second domestic shipping service gives your buyer more shipping options to choose from."></span>
             </label>
             <select data-id="65" id="shipping-service2" class="input-field">
-                <option></option>
+                <option>{{ array.46 }}</option>
                 <option>USPSExpressMailInternational</option>
                 <option>UPSStandardToCanada</option>
                 <option>Enter your own</option>
@@ -494,7 +500,7 @@
             <label for="additional-details">Additional Details
                 <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
             </label>
-            <input data-id="74" id="additional-details" class="input-field" type="text">
+            <input data-id="74" id="additional-details" class="input-field" type="text" value="{{ array.47 }}">
         </div>
 
 
@@ -505,22 +511,22 @@
             <label for="shipping-promotion">Promotional Shipping Discount
                 <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
             </label>
-            <input data-id="68" id="hipping-promotion" class="input-field" type="text">
+            <input data-id="68" id="hipping-promotion" class="input-field" type="text" value="{{ array.48 }}">
 
             <label for="shipping-discount">Shipping Discount Profile ID
                 <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
             </label>
-            <input data-id="69" id="shipping-discount" class="input-field" type="text">
+            <input data-id="69" id="shipping-discount" class="input-field" type="text" value="{{ array.49 }}">
 
             <label for="takeback-policy">Take Back Policy ID
                 <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
             </label>
-            <input data-id="78" id="takeback-policy" class="input-field" type="text">
+            <input data-id="78" id="takeback-policy" class="input-field" type="text" value="{{ array.50 }}">
 
             <label for="product-policy">Product Compliance Policy ID
                 <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
             </label>
-            <input data-id="79" id="product-policy" class="input-field" type="text">
+            <input data-id="79" id="product-policy" class="input-field" type="text" value="{{ array.51 }}">
         </div>
 
         <!-- extra details -->
@@ -533,18 +539,18 @@
             <label for="features">Features
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Secondary attributes or functions that are not essential to the main function of the product"></span>
             </label>
-            <input data-id="14" id="features" class="input-field" type="text">
+            <input data-id="14" id="features" class="input-field" type="text" value="{{ array.52 }}">
 
             <label for="card-number">Card Number
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Unique number identifier assigned to the card within a product set, assigned by the manufacturer"></span>
             </label>
-            <input data-id="25" id="card-number" class="input-field" type="text">
+            <input data-id="25" id="card-number" class="input-field" type="text" value="{{ array.53 }}">
 
             <label for="rarity">Rarity
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Level of rarity the card has"></span>
             </label>
             <select data-id="18" id="rarity" class="input-field">
-                <option></option>
+                <option>{{ array.54 }}</option>
                 <option>Common</option>
                 <option>Uncommon</option>
                 <option>Rare</option>
@@ -556,7 +562,7 @@
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of finish style of the product"></span>
             </label>
             <select data-id="19" id="finish" class="input-field">
-                <option></option>
+                <option>{{ array.55 }}</option>
                 <option>Foil</option>
                 <option>Regular</option>
                 <option>Reverse Holo</option>
@@ -567,7 +573,7 @@
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Manufacturer or brand of the product"></span>
             </label>
             <select data-id="20" id="manufacturer" class="input-field">
-                <option></option>
+                <option>{{ array.56 }}</option>
                 <option>Wizards of the Coast</option>
                 <option>Enter your own</option>
             </select>
@@ -575,28 +581,28 @@
             <label for="custom-label">Custom Label
                 <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
             </label>
-            <input data-id="1" id="custom-label" class="input-field" type="text">
+            <input data-id="1" id="custom-label" class="input-field" type="text" value="{{ array.57 }}">
 
             <label for="store-categoty">Store Category
                 <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
             </label>
-            <input data-id="3" id="store-category" class="input-field" type="text">
+            <input data-id="3" id="store-category" class="input-field" type="text" value="{{ array.58 }}">
 
             <label for="relationship">Relationship
                 <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
             </label>
-            <input data-id="6" id="relationship" class="input-field" type="text">
+            <input data-id="6" id="relationship" class="input-field" type="text" value="{{ array.59 }}">
 
             <label for="relationship-details">Relationship Details
                 <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
             </label>
-            <input data-id="7" id="relationship-details" class="input-field" type="text">
+            <input data-id="7" id="relationship-details" class="input-field" type="text" value="{{ array.60 }}">
 
             <label for="autographed">Autographed
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Whether the product is signed or autographed"></span>
             </label>
             <select data-id="24" id="autographed" class="input-field">
-                <option></option>
+                <option>{{ array.61 }}</option>
                 <option>Yes</option>
                 <option>No</option>
             </select>
@@ -605,23 +611,23 @@
                 <label for="signed">Signed By
                     <span class="glyphicon glyphicon-info-sign" data-tooltip="Name of the person or character who signed or autographed the product"></span>
                 </label>
-                <input data-id="37" id="signed" class="input-field" type="text">
+                <input data-id="37" id="signed" class="input-field" type="text" value="{{ array.62 }}">
 
                 <label for="autograph-auth">Autograph Authentication
                     <span class="glyphicon glyphicon-info-sign" data-tooltip="Name of the person or character who signed or autographed the product"></span>
                 </label>
-                <input data-id="38" id="Autograph Authentication" class="input-field" type="text">
+                <input data-id="38" id="Autograph Authentication" class="input-field" type="text" value="{{ array.63 }}">
 
                 <label for="auto-auth-number">Autograph Authentication Number
                     <span class="glyphicon glyphicon-info-sign" data-tooltip="Unique identifier assigned to the autograph existing on the product, set by the professional authentication company"></span>
                 </label>
-                <input data-id="47" id="auto-auth-number" class="input-field" type="text">
+                <input data-id="47" id="auto-auth-number" class="input-field" type="text" value="{{ array.64 }}">
 
                 <label for="autograph-format">Autograph Format
                     <span class="glyphicon glyphicon-info-sign" data-tooltip="Format of the autograph applied to the product"></span>
                 </label>
                 <select data-id="39" id="autograph-format" class="input-field">
-                    <option></option>
+                    <option>{{ array.65 }}</option>
                     <option>Cut</option>
                     <option>Hard Signed</option>
                     <option>Label or Sticker</option>
@@ -632,7 +638,7 @@
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Suitable age range of the user for the product"></span>
             </label>
             <select data-id="28" id="age-level" class="input-field">
-                <option></option>
+                <option>{{ array.66 }}</option>
                 <option>4+</option>
                 <option>6+</option>
                 <option>8+</option>
@@ -646,7 +652,7 @@
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Type of language supported by the product"></span>
             </label>
             <select data-id="29" id="language" class="input-field">
-                <option></option>
+                <option>{{ array.67 }}</option>
                 <option>English</option>
                 <option>Japanese</option>
             </select>
@@ -655,7 +661,7 @@
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Size of the card, characterized by size type"></span>
             </label>
             <select data-id="30" id="card-size" class="input-field">
-                <option></option>
+                <option>{{ array.68 }}</option>
                 <option>Standard</option>
                 <option>Oversized</option>
                 <option>Japanese</option>
@@ -665,18 +671,18 @@
             <label for="manu-year">Year Manufactured
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Year the product was produced by the manufacturer, not the same as the year the product was sold or the product’s expiration date"></span>
             </label>
-            <input data-id="31" id="manu-year" class="input-field" type="number">
+            <input data-id="31" id="manu-year" class="input-field" type="number" value="{{ array.69 }}">
 
             <label for="event">Convention/Event
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Name of the convention or event associated with the product, characterized by event type and/or location and/or year held"></span>
             </label>
-            <input data-id="34" id="event" class="input-field" type="text">
+            <input data-id="34" id="event" class="input-field" type="text" value="{{ array.70 }}">
 
             <label for="material">Material
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Main or most used material of the product itself, does not include the product’s packaging"></span>
             </label>
             <select data-id="33" id="material" class="input-field">
-                <option></option>
+                <option>{{ array.71 }}</option>
                 <option>Card Stock</option>
                 <option>Paper</option>
                 <option>Enter your own</option>
@@ -686,7 +692,7 @@
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Whether the product has a vintage year of manufacture that is more than 20 years old"></span>
             </label>
             <select data-id="35" id="vintage" class="input-field">
-                <option></option>
+                <option>{{ array.72 }}</option>
                 <option>Yes</option>
                 <option>No</option>
             </select>
@@ -695,7 +701,7 @@
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Geographic location where the product is manufactured. This doesn't include where the individual components are manufactured nor the country where the product is sold from."></span>
             </label>
             <select data-id="36" id="region" class="input-field">
-                <option></option>
+                <option>{{ array.73 }}</option>
                 <option>United States</option>
                 <option>Japan</option>
                 <option>Enter your own</option>
@@ -704,58 +710,70 @@
             <label for="illustrator">Illustrator
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Name of the artist or person who created the artwork on the product and/or its packaging"></span>
             </label>
-            <input data-id="40" id="illustrator" class="input-field" type="text">
+            <input data-id="40" id="illustrator" class="input-field" type="text" value="{{ array.74 }}">
 
             <label for="hp">HP
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Number of hit points (HP) the Pokémon character or species has"></span>
             </label>
-            <input data-id="41" id="hp" class="input-field" type="text">
+            <input data-id="41" id="hp" class="input-field" type="text" value="{{ array.75 }}">
 
             <label for="bundle">Custom Bundle
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Whether the main product is sold with complementary or additional products"></span>
             </label>
             <select data-id="42" id="bundle" class="input-field">
-                <option></option>
+                <option>{{ array.76 }}</option>
                 <option>No</option>
                 <option>Yes</option>
             </select>
             <label for="bundle-description">Bundle Description</label>
-            <input data-id="48" id="bundle-description" class="input-field" type="text">
+            <input data-id="48" id="bundle-description" class="input-field" type="text" value="{{ array.77 }}">
 
             <label for="ap">Attack/Power
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Level of attacking strength or power the character on the card or the card itself has"></span>
             </label>
-            <input data-id="43" id="ap" class="input-field" type="text">
+            <input data-id="43" id="ap" class="input-field" type="text" value="{{ array.78 }}">
 
             <label for="dt">Defense/Toughness
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Level of defensive strength or toughness the character on the card or the card itself has"></span>
             </label>
-            <input data-id="44" id="dt" class="input-field" type="text">
+            <input data-id="44" id="dt" class="input-field" type="text" value="{{ array.79 }}">
 
             <label for="california">California Prop 65 Warning
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="California proposition 65 requires businesses to provide warnings to Californians about significant exposure to chemicals that cause cancer, birth defects, or other reproductive harm. Add details about the warning you want to show California buyers. We'll add a warning symbol and the word 'warning:' before the description you enter here, and we'll add 'for more information go to www.p65warnings.ca.gov' following your description."></span>
             </label>
-            <input data-id="45" id="california" class="input-field" type="text">
+            <input data-id="45" id="california" class="input-field" type="text" value="{{ array.80 }}">
 
             <label for="cost">Cost
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Amount of energy the character or card requires to attack or defend"></span>
             </label>
-            <input data-id="46" id="cost" class="input-field" type="text">
+            <input data-id="46" id="cost" class="input-field" type="text" value="{{ array.81 }}">
 
             <label for="gallery">Gallery Type
                 <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
             </label>
-            <input data-id="50" id="gallery" class="input-field" type="text">
+            <input data-id="50" id="gallery" class="input-field" type="text" value="{{ array.82 }}">
         </div>
 
         <!-- hidden -->
         <div style="display: none;">
             <input data-id="2" id="category" value="183454" class="input-field">
 
-            <input id="session-id" value="">
+            <input id="session-id" value="{{ session }}">
         </div>
 
-        <button id="static-button" class="btn btn-primary">Continue</button>
+        {% if request.user.is_authenticated %}
+            <button id="save-btn" class="btn btn-secondary" type="button">Save as Template</button>
+            <input id="save" name="save" value="" hidden>
+        {% endif %}
+        {% if unique %}
+            <button id="next" class="btn btn-secondary">Next Listing</button>
+            <button id="finish-button" class="btn btn-primary">Finish</button>
+            <button id="static-button" class="btn btn-primary" hidden>Continue</button>
+        {% else %}
+            <button id="static-button" class="btn btn-primary">Continue</button>
+            <button id="next" class="btn btn-secondary" hidden>Next Listing</button>
+            <button id="finish-button" class="btn btn-primary" hidden>Finish</button>
+        {% endif %}
     </section>
 {% endblock %}
 

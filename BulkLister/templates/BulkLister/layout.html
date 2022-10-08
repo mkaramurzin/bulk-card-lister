@@ -23,7 +23,7 @@
                 </li>
                 {% if request.user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'templates' %}"><strong>Saved Templates</strong></a>
+                        <a class="nav-link" href="{% url 'saved' %}"><strong>Saved Templates</strong></a>
                     </li>
                 {% endif %}
                 {% if request.user.is_authenticated %}

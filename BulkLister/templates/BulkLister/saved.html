@@ -1,0 +1,17 @@
+{% extends "BulkLister/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <section class="form-section">
+        <h3>Saved Templates:</h3>
+        {% for item in templates %}
+            <a href="{% url 'template' id=item.id %}">
+                <div class="template">
+                    <h5>{{ item.name }}</h5>
+                </div>
+            </a>
+        {% empty %}
+            <h3>No Templates Saved</h3>
+        {% endfor %}
+    </section>
+{% endblock %}

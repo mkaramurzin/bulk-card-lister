@@ -10,7 +10,7 @@ import csv
 import json
 from datetime import datetime
 
-from . models import User, Field, ListingInfo, Session
+from . models import User, Field, ListingInfo, Session, SavedTemplate
 
 # Create your views here.
 
@@ -104,6 +104,7 @@ def index(request):
 def input(request):
     data = json.loads(request.body)
     array = data.get("array", "")
+    template = data.get("saved", "")
 
     session = Session()
     session.save()
@@ -113,6 +114,7 @@ def input(request):
         field.save()
         session.static.add(field)
         session.save()
+        # print(f"{field.index} - {field.value}")
     
 
     return JsonResponse({"id": session.id})
@@ -121,6 +123,9 @@ def input(request):
 def unique(request, id):
     session = Session.objects.get(id=id)
     data = session.static.all()
+    array = []
+    for field in data:
+        array.append(field.value)
     # data.filter(index=12, value="").delete() WORKS
     # for item in data:
     #     # data.delete(item)
@@ -128,9 +133,10 @@ def unique(request, id):
     #     print(str(item.index) + ":" + str(item.value))
 
 
-    return render(request, "BulkLister/unique.html", {
-        "fields": session.static.all(),
+    return render(request, "BulkLister/index.html", {
+        "array": array,
         "session": session.id,
+        "unique": True
     })
 
 @csrf_exempt
@@ -145,7 +151,7 @@ def finish(request):
 
     for input in array:
         field = Field(index=input[0], value=input[1])
-        print(f'{field.index} : {field.value}')
+        # print(f'{field.index} : {field.value}')
         field.save()
         new_listing.listing.add(field)
         new_listing.save()
@@ -153,10 +159,10 @@ def finish(request):
     session.listings.add(new_listing)
     session.save()
 
-    print("--------------------------------------")
-    for listing in session.listings.all():
-        for data in listing.listing.all():
-            print(data.index)
+    # print("--------------------------------------")
+    # for listing in session.listings.all():
+    #     for data in listing.listing.all():
+    #         print(data.index)
 
     return JsonResponse({"message":"success"})
 
@@ -170,9 +176,6 @@ def download(request, id):
         #         print(data)
         now = datetime.now()
         dt_string = now.strftime("%d-%m-%Y-%H-%M-%S")
-
-        for listing in session.listings.all():
-            print('------------------------------------=')
 
         # clean duplicates
         for listing in session.listings.all():
@@ -221,7 +224,31 @@ def file(request, id):
     response['Content-Disposition'] = 'attachment; filename="listings.csv"'
     return response
     
+def saved(request):
+    if request.user.id is None:
+        return HttpResponseRedirect(reverse('login'))
 
+    return render(request, "BulkLister/saved.html", {
+        "templates": SavedTemplate.objects.filter(user=request.user).order_by('-id')
+    })
+
+def template(request, id):
+    template = SavedTemplate.objects.get(id=id)
+    now = datetime.now()
+    dt_string = now.strftime("%d-%m-%Y-%H-%M-%S")
+    filename = f'ebay-listing-{dt_string}.csv'
+    template.session.csv_dir = filename
+    template.session.save()
+    data = template.session.static.all()
+    array = []
+    for field in data:
+        array.append(field.value)
+
+    return render(request, "BulkLister/index.html", {
+        "array": array,
+        "session": template.session.id,
+        "saved": True
+    })
 
 @csrf_exempt
 def test(request):
@@ -229,9 +256,9 @@ def test(request):
 
 # helper methods
 def returns_option(val):
-    if val is '14 days':
+    if val == '14 days':
         return 'Days_14'
-    elif val is '30 days':
+    elif val == '30 days':
         return 'Days_30'
-    elif val is '60 days':
+    elif val == '60 days':
         return 'Days_60'
