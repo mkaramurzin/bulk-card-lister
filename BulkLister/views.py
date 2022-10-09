@@ -9,6 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 import csv
 import json
 from datetime import datetime
+from django.core.paginator import Paginator
 
 from . models import User, Field, ListingInfo, Session, SavedTemplate
 
@@ -67,10 +68,8 @@ def register(request):
 
 @csrf_exempt
 def index(request):
-    if request.method == 'POST':
-        return render(request, "BulkLister/static.html")
-    else:
-        return render(request, "BulkLister/index.html")
+    
+    return render(request, "BulkLister/index.html")
 
 # @csrf_exempt
 # def input(request):
@@ -104,7 +103,7 @@ def index(request):
 def input(request):
     data = json.loads(request.body)
     array = data.get("array", "")
-    template = data.get("saved", "")
+    template = data.get("template", "")
 
     session = Session()
     session.save()
@@ -115,6 +114,10 @@ def input(request):
         session.static.add(field)
         session.save()
         # print(f"{field.index} - {field.value}")
+
+    if(template != ""):
+        saved_template = SavedTemplate.objects.create(user=request.user, name=template, session=session)
+        saved_template.save()
     
 
     return JsonResponse({"id": session.id})
@@ -227,9 +230,14 @@ def file(request, id):
 def saved(request):
     if request.user.id is None:
         return HttpResponseRedirect(reverse('login'))
+    
+    templates = SavedTemplate.objects.filter(user=request.user).order_by('-id')
+    paginator = Paginator(templates, 5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     return render(request, "BulkLister/saved.html", {
-        "templates": SavedTemplate.objects.filter(user=request.user).order_by('-id')
+        "templates": page_obj
     })
 
 def template(request, id):

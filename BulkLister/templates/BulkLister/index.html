@@ -12,9 +12,7 @@
         {% endif %}
 
         <div class="div-tooltip"></div>
-        
-            <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span>
-        </label>
+
         <!-- Visible  -->
 
         <label for="action">*Action
@@ -760,16 +758,19 @@
 
             <input id="session-id" value="{{ session }}">
         </div>
+        <input id="save" name="save" value="" hidden>
 
-        {% if request.user.is_authenticated %}
-            <button id="save-btn" class="btn btn-secondary" type="button">Save as Template</button>
-            <input id="save" name="save" value="" hidden>
-        {% endif %}
         {% if unique %}
+        <button id="save-btn" class="btn btn-secondary" type="button" hidden>Save as Template</button>
             <button id="next" class="btn btn-secondary">Next Listing</button>
             <button id="finish-button" class="btn btn-primary">Finish</button>
             <button id="static-button" class="btn btn-primary" hidden>Continue</button>
         {% else %}
+            {% if request.user.is_authenticated %}
+                <button id="save-btn" class="btn btn-secondary" type="button">Save as Template</button>
+            {% else %}
+                <button id="save-btn" class="btn btn-secondary" type="button" hidden>Save as Template</button>
+            {% endif %}
             <button id="static-button" class="btn btn-primary">Continue</button>
             <button id="next" class="btn btn-secondary" hidden>Next Listing</button>
             <button id="finish-button" class="btn btn-primary" hidden>Finish</button>

@@ -39,68 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     })
 
-    // Continue button clicked
-    document.querySelector('#static-button').onclick = function() {
-        StaticContinue();
-        // let id = document.querySelector('#session-id').value;
-        // location.href = `unique/${id}`;
-    };
-
-    // finish
-    document.querySelector('#finish-button').onclick = function() {
-        var array = []
-        document.querySelectorAll('.input-field').forEach(field => {
-            let index = field.dataset.id;
-            let val = field.value;
-            var item = [index, val]
-            array.push(item)
-        })
-
-        fetch('finish', {
-            method: 'POST',
-            body: JSON.stringify({
-                array: array,
-                session_id: document.querySelector('#session-id').value
-            })
-        })
-        .then(response => response.json())
-        .then(result => {
-            // document.querySelector('#session-id').value = result.id;
-            let id = document.querySelector('#session-id').value;
-            location.href = `download/${id}`;
-        })
-        .catch(error => {
-            console.log(error);
-        });
-    }
-
-    // next listing
-    document.querySelector('#next').onclick = function() {
-        var array = []
-        document.querySelectorAll('.input-field').forEach(field => {
-            let index = field.dataset.id;
-            let val = field.value;
-            var item = [index, val]
-            array.push(item)
-        })
-
-        fetch('finish', {
-            method: 'POST',
-            body: JSON.stringify({
-                array: array,
-                session_id: document.querySelector('#session-id').value
-            })
-        })
-        .then(response => response.json())
-        .then(result => {
-            let id = document.querySelector('#session-id').value;
-            location.href = `/unique/${id}`;
-        })
-        .catch(error => {
-            console.log(error);
-        });
-    }
-
     // Card is graded
     document.querySelector("#graded").addEventListener('change', function() {
         let select = document.querySelector('#graded')
@@ -194,10 +132,83 @@ document.addEventListener('DOMContentLoaded', function() {
     // name tamplate
     document.querySelector('#save-btn').addEventListener('click', function() {
         let name = prompt("Name your template:", "");
-        document.querySelector('#save').value = name;
-        document.getElementById('save-btn').className = 'btn btn-success';
+        if(name === "") {
+            alert("You must name your template to save it")
+        } else {
+            document.querySelector('#save').value = name;
+            document.getElementById('save-btn').className = 'btn btn-success';
+            StaticContinue();
+        }
     })
 
+    // Continue button clicked
+    document.querySelector('#static-button').onclick = function() {
+        if(document.querySelector('#save').value === "") {
+            StaticContinue()
+            .then(function() {
+                let id = document.querySelector('#session-id').value;
+                location.href = `/unique/${id}`;
+            })
+        } else {
+            let id = document.querySelector('#session-id').value;
+            location.href = `/unique/${id}`;
+        }
+    };
+
+    // finish
+    document.querySelector('#finish-button').onclick = function() {
+        var array = []
+        document.querySelectorAll('.input-field').forEach(field => {
+            let index = field.dataset.id;
+            let val = field.value;
+            var item = [index, val]
+            array.push(item)
+        })
+
+        fetch('finish', {
+            method: 'POST',
+            body: JSON.stringify({
+                array: array,
+                session_id: document.querySelector('#session-id').value
+            })
+        })
+        .then(response => response.json())
+        .then(result => {
+            // document.querySelector('#session-id').value = result.id;
+            let id = document.querySelector('#session-id').value;
+            location.href = `download/${id}`;
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
+    // next listing
+    document.querySelector('#next').onclick = function() {
+        var array = []
+        document.querySelectorAll('.input-field').forEach(field => {
+            let index = field.dataset.id;
+            let val = field.value;
+            var item = [index, val]
+            array.push(item)
+        })
+
+        fetch('finish', {
+            method: 'POST',
+            body: JSON.stringify({
+                array: array,
+                session_id: document.querySelector('#session-id').value
+            })
+        })
+        .then(response => response.json())
+        .then(result => {
+            let id = document.querySelector('#session-id').value;
+            location.href = `/unique/${id}`;
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
 })
 
 function StaticContinue() {
@@ -208,7 +219,7 @@ function StaticContinue() {
         var item = [index, val]
         array.push(item)
     })
-    fetch('input', {
+    fetch('/input', {
         method: 'POST',
         body: JSON.stringify({
             array: array,
@@ -218,8 +229,8 @@ function StaticContinue() {
     .then(response => response.json())
     .then(result => {
         document.querySelector('#session-id').value = result.id;
-        let id = document.querySelector('#session-id').value;
-        location.href = `unique/${id}`;
+        // let id = document.querySelector('#session-id').value;
+        // location.href = `/unique/${id}`;
     })
     .catch(error => {
         console.log(error);
