@@ -42,7 +42,7 @@
             <option>Used</option>
         </select>
 
-        <label for="photos">*Photos <a href="https://imgbb.com/" target="_blank">(upload and copy url) </a>
+        <label for="photos">*Photos <a href="https://imgur.com/" target="_blank">(upload and copy url) </a>
             <span class="glyphicon glyphicon-info-sign" data-tooltip="URL of the image to add to your listing. For best results, use an image that is in .jpg format and is at least 1000 pixels on the longest side."></span>
         </label>
         <input data-id="49" id="photos" class="input-field" type="text" value="{{ array.4 }}">
@@ -780,4 +780,5 @@
 
 {% block script %}
     <script src="{% static 'BulkLister/index.js' %}"></script>
+    <script src="{% static 'BulkLister/tooltip.js' %}"></script>
 {% endblock %}

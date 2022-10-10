@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+    // graded
     document.querySelector("#graded").addEventListener('change', function() {
         let select = document.querySelector('#graded')
         let value = select.options[select.selectedIndex].value;
@@ -137,22 +139,13 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             document.querySelector('#save').value = name;
             document.getElementById('save-btn').className = 'btn btn-success';
-            StaticContinue();
+            document.getElementById('save-btn').innerHTML = "Continue to save";
         }
     })
 
     // Continue button clicked
     document.querySelector('#static-button').onclick = function() {
-        if(document.querySelector('#save').value === "") {
-            StaticContinue()
-            .then(function() {
-                let id = document.querySelector('#session-id').value;
-                location.href = `/unique/${id}`;
-            })
-        } else {
-            let id = document.querySelector('#session-id').value;
-            location.href = `/unique/${id}`;
-        }
+        StaticContinue();
     };
 
     // finish
@@ -223,14 +216,15 @@ function StaticContinue() {
         method: 'POST',
         body: JSON.stringify({
             array: array,
-            template: document.querySelector('#save').value
+            template: document.querySelector('#save').value,
+            id: document.querySelector('#session-id').value
         })
     })
     .then(response => response.json())
     .then(result => {
-        document.querySelector('#session-id').value = result.id;
-        // let id = document.querySelector('#session-id').value;
-        // location.href = `/unique/${id}`;
+        console.log(result);
+        let id = document.querySelector('#session-id').value;
+        location.href = `/unique/${id}`;
     })
     .catch(error => {
         console.log(error);

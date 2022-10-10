@@ -68,45 +68,21 @@ def register(request):
 
 @csrf_exempt
 def index(request):
+    session = Session.objects.create()
+    session.save()
     
-    return render(request, "BulkLister/index.html")
-
-# @csrf_exempt
-# def input(request):
-#     data = json.loads(request.body)
-#     print(data)
-#     array = data.get("array", "")
-#     session_id = data.get("session_id", "")
-#     value = data.get("input", "")
-#     index = data.get("index", "")
-    
-#     new_field = Field(index=index, value=value)
-#     new_field.save()
-
-#     # print(session_id)
-#     # print(new_field.value)
-#     # print(new_field.index)
-
-#     if session_id is "":
-#         session = Session()
-#         session.save()
-#     else:
-#         session = Session.objects.get(id=session_id)
-#         session.save()
-
-#     session.static.add(new_field)
-#     session.save()
-
-#     return JsonResponse({"id": session.id})
+    return render(request, "BulkLister/index.html", {
+        "session": session.id
+    })
 
 @csrf_exempt
 def input(request):
     data = json.loads(request.body)
     array = data.get("array", "")
     template = data.get("template", "")
+    id = data.get("id", "")
 
-    session = Session()
-    session.save()
+    session = Session.objects.get(id=id)
 
     for input in array:
         field = Field(index=input[0], value=input[1])
@@ -129,11 +105,6 @@ def unique(request, id):
     array = []
     for field in data:
         array.append(field.value)
-    # data.filter(index=12, value="").delete() WORKS
-    # for item in data:
-    #     # data.delete(item)
-    #     print("TEST")
-    #     print(str(item.index) + ":" + str(item.value))
 
 
     return render(request, "BulkLister/index.html", {
@@ -182,34 +153,53 @@ def download(request, id):
 
         # clean duplicates
         for listing in session.listings.all():
-            data = listing.listing.all()
-            data.filter(index=12, value="").delete()
-            data.filter(index=15, value="").delete()
-            data.filter(index=27, value="").delete()
-            data.filter(index=32, value="").delete()
+            for data in listing.listing.all():
+                if data.value == "":
+                    data.delete
 
         session.csv_dir = "ebay-lisitng-"+str(dt_string)+".csv"
         session.save()
         template = "listing-template/CCG.csv"
         filename = "download/" + session.csv_dir
 
+        # obj = session.listings.first().listing.get(index=0).index
+        # print(obj)
+        print('TEST')
+        data = session.listings.first().listing.filter(index=0)
+        if data:
+            print("exists")
+            print(session.listings.first().listing.get(index=0).value)
+        else:
+            print("None")
+        print(session.listings.first().listing.count())
+        
+
         with open(template, 'rt', encoding="utf8", newline='') as temp, open(filename, "wt", encoding="utf8", newline='') as file:
             writer = csv.writer(file)
             reader = csv.reader(temp)
             writer.writerow(next(reader))
 
-            for listing in session.listings.all():
-                i = 0
-                row = []
-                while(i < 80):
-                    for data in listing.listing.all():
-                        if(data.index == i):
-                            if i == 71:
-                                row.append(returns_option(data.value))
-                            else:
-                                row.append(data.value)
-                    i += 1
-                writer.writerow(row)
+            # for listing in session.listings.all():
+            #     # i = 0
+            #     row = []
+            #     for i in range (listing.listing.count()):
+            #         data = session.listings.first().listing.filter(index=i)
+            #         print(data.value)
+            #         if i == 71:
+            #             row.append(returns_option(data.value))
+            #         if data:
+            #             row.append(data.value)
+            #         else:
+            #             row.append("")
+            #     # while(i < 80):
+            #     #     for data in listing.listing.all():
+            #     #         if(data.index == i):
+            #     #             if i == 71:
+            #     #                 row.append(returns_option(data.value))
+            #     #             else:
+            #     #                 row.append(data.value)
+            #     #     i += 1
+            #     writer.writerow(row)
         return render(request, "BulkLister/download.html", {
             "id": session.id,
         })
