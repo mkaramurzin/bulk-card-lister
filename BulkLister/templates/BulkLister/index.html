@@ -54,6 +54,7 @@
             <option>{{ array.5 }}</option>
             <option id="game-option">Pokemon TCG</option>
             <option id="game-option">Magic: The Gathering</option>
+            <option></option>
         </select>
 
         <div id="MTG" style="display: none;">
@@ -303,19 +304,19 @@
         </label>
         <select data-id="52" id="format" class="input-field">
             <option>{{ array.24 }}</option>
-            <option>Auction-style</option>
+            <option>Auction</option>
             <option>Fixed price</option>
         </select>
 
-        <label for="duration">*Duration
+        <label for="duration">*Duration (days) 
             <span class="glyphicon glyphicon-info-sign" data-tooltip="Select how long your listing will run. If your item doesn't sell, you can choose to relist it."></span>
         </label>
         <select data-id="53" id="duration" class="input-field">
             <option>{{ array.25 }}</option>
-            <option>3 days</option>
-            <option>5 days</option>
-            <option>7 days</option>
-            <option>10 days</option>
+            <option>3</option>
+            <option>5</option>
+            <option>7</option>
+            <option>10</option>
         </select>
 
         <label for="starting-price">*Starting price
@@ -331,12 +332,12 @@
         <label for="quantity">Quantity
             <!-- <span class="glyphicon glyphicon-info-sign" data-tooltip=""></span> -->
         </label>
-        <input data-id="56" id="quantity" class="input-field" type="number" value="{{ array.28 }}">
+        <input data-id="56" id="quantity" class="input-field" value="{{ array.28 }}">
 
         <label for="additional-selling">Additional selling details
             <input type="checkbox" id="additional-selling">
         </label>
-        <div id="additional-selling-details" style="display: none;">
+        <div id="additional-selling-details" class="grow" style="display: none;">
             <label for="paypal-accepted">PayPal Accepted
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Required to use only if you are not yet opted into eBay Payments or Business Policies."></span>
             </label>
@@ -532,7 +533,7 @@
         <label for="additional-options-checkbox">Show additional options
             <input type="checkbox" id="additional-options-checkbox">
         </label>
-        <div id="additional-options" style="display: none;">
+        <div id="additional-options" class="grow" style="display: none;">
 
             <label for="features">Features
                 <span class="glyphicon glyphicon-info-sign" data-tooltip="Secondary attributes or functions that are not essential to the main function of the product"></span>

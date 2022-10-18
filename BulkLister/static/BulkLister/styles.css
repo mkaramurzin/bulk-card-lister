@@ -52,3 +52,15 @@ button {
     letter-spacing: 3px;
     line-height: 48px;
 }
+
+@keyframes grow {
+    from {
+        opacity: 100%;
+        /* height: 0px; */
+    }
+
+    to {
+        opacity: 50%;
+        /* height: 100px; */
+    }
+}

@@ -1,1 +1,1 @@
-"# bulk-card-lister" 
+# bulk-card-lister

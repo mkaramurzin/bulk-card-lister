@@ -143,6 +143,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     })
 
+    // if fields are filled out on unique page
+    let gameVal = document.querySelector('#game').value;
+    if(gameVal === "Pokemon TCG") {
+        document.querySelector('#pokemon').style.display = 'block';
+    } else if(gameVal === "MTG") {
+        document.querySelector('#MTG').style.display = 'block';
+    }
+
+    if(document.querySelector('#graded').value === "Yes") {
+        document.querySelector('#graded-yes').style.display = 'block';
+    }
+
     // Continue button clicked
     document.querySelector('#static-button').onclick = function() {
         StaticContinue();

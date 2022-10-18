@@ -83,13 +83,14 @@ def input(request):
     id = data.get("id", "")
 
     session = Session.objects.get(id=id)
+    if(session.static.first):
+        session.static.all().delete()
 
     for input in array:
         field = Field(index=input[0], value=input[1])
         field.save()
         session.static.add(field)
         session.save()
-        # print(f"{field.index} - {field.value}")
 
     if(template != ""):
         saved_template = SavedTemplate.objects.create(user=request.user, name=template, session=session)
@@ -133,21 +134,12 @@ def finish(request):
     session.listings.add(new_listing)
     session.save()
 
-    # print("--------------------------------------")
-    # for listing in session.listings.all():
-    #     for data in listing.listing.all():
-    #         print(data.index)
-
     return JsonResponse({"message":"success"})
 
 def download(request, id):
     session = Session.objects.get(id=id)
 
     if request.method == 'GET':
-        # print("--------------------------------------")
-        # for listing in session.listings.all():
-        #     for data in listing:
-        #         print(data)
         now = datetime.now()
         dt_string = now.strftime("%d-%m-%Y-%H-%M-%S")
 
@@ -155,51 +147,30 @@ def download(request, id):
         for listing in session.listings.all():
             for data in listing.listing.all():
                 if data.value == "":
-                    data.delete
+                    data.delete()
 
         session.csv_dir = "ebay-lisitng-"+str(dt_string)+".csv"
         session.save()
         template = "listing-template/CCG.csv"
         filename = "download/" + session.csv_dir
 
-        # obj = session.listings.first().listing.get(index=0).index
-        # print(obj)
-        print('TEST')
-        data = session.listings.first().listing.filter(index=0)
-        if data:
-            print("exists")
-            print(session.listings.first().listing.get(index=0).value)
-        else:
-            print("None")
-        print(session.listings.first().listing.count())
-        
-
         with open(template, 'rt', encoding="utf8", newline='') as temp, open(filename, "wt", encoding="utf8", newline='') as file:
             writer = csv.writer(file)
             reader = csv.reader(temp)
             writer.writerow(next(reader))
 
-            # for listing in session.listings.all():
-            #     # i = 0
-            #     row = []
-            #     for i in range (listing.listing.count()):
-            #         data = session.listings.first().listing.filter(index=i)
-            #         print(data.value)
-            #         if i == 71:
-            #             row.append(returns_option(data.value))
-            #         if data:
-            #             row.append(data.value)
-            #         else:
-            #             row.append("")
-            #     # while(i < 80):
-            #     #     for data in listing.listing.all():
-            #     #         if(data.index == i):
-            #     #             if i == 71:
-            #     #                 row.append(returns_option(data.value))
-            #     #             else:
-            #     #                 row.append(data.value)
-            #     #     i += 1
-            #     writer.writerow(row)
+            for listing in session.listings.all():
+                i = 0
+                row = []
+                while i < 80:
+                    data = listing.listing.filter(index=i)
+                    if data:
+                            row.append(listing.listing.get(index=i).value)
+                    else:
+                        row.append("")
+                    i += 1
+                writer.writerow(row)
+
         return render(request, "BulkLister/download.html", {
             "id": session.id,
         })
@@ -210,17 +181,18 @@ def file(request, id):
 
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-    with open(os.path.join(base_dir + '/download/', filename), 'rt', newline='') as f:
+    with open(os.path.join(base_dir + '/download/', filename), 'rt', encoding='utf-8', newline='') as f:
         data = f.read()
 
     response = HttpResponse(data)
     response['Content-Disposition'] = 'attachment; filename="listings.csv"'
     return response
     
+# list of saved templates
 def saved(request):
     if request.user.id is None:
         return HttpResponseRedirect(reverse('login'))
-    
+
     templates = SavedTemplate.objects.filter(user=request.user).order_by('-id')
     paginator = Paginator(templates, 5)
     page_number = request.GET.get('page')
@@ -230,6 +202,7 @@ def saved(request):
         "templates": page_obj
     })
 
+# individual template
 def template(request, id):
     template = SavedTemplate.objects.get(id=id)
     now = datetime.now()
@@ -241,6 +214,8 @@ def template(request, id):
     array = []
     for field in data:
         array.append(field.value)
+    # clear session's listings
+    template.session.listings.all().delete()
 
     return render(request, "BulkLister/index.html", {
         "array": array,
@@ -251,12 +226,3 @@ def template(request, id):
 @csrf_exempt
 def test(request):
     return render(request, "BulkLister/test.html")
-
-# helper methods
-def returns_option(val):
-    if val == '14 days':
-        return 'Days_14'
-    elif val == '30 days':
-        return 'Days_30'
-    elif val == '60 days':
-        return 'Days_60'
