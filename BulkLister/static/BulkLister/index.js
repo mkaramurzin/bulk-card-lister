@@ -174,7 +174,8 @@ document.addEventListener('DOMContentLoaded', function() {
             method: 'POST',
             body: JSON.stringify({
                 array: array,
-                session_id: document.querySelector('#session-id').value
+                session_id: document.querySelector('#session-id').value,
+                copies: document.querySelector("#copies").value
             })
         })
         .then(response => response.json())
@@ -202,7 +203,8 @@ document.addEventListener('DOMContentLoaded', function() {
             method: 'POST',
             body: JSON.stringify({
                 array: array,
-                session_id: document.querySelector('#session-id').value
+                session_id: document.querySelector('#session-id').value,
+                copies: document.querySelector("#copies").value
             })
         })
         .then(response => response.json())

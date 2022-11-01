@@ -119,20 +119,21 @@ def finish(request):
     data = json.loads(request.body)
     array = data.get("array")
     session_id = data.get("session_id", "")
-
+    copies = data.get("copies", "")
     session = Session.objects.get(id=session_id)
-    new_listing = ListingInfo()
-    new_listing.save()
 
-    for input in array:
-        field = Field(index=input[0], value=input[1])
-        # print(f'{field.index} : {field.value}')
-        field.save()
-        new_listing.listing.add(field)
+    for i in range(int(copies)):
+        new_listing = ListingInfo()
         new_listing.save()
-    
-    session.listings.add(new_listing)
-    session.save()
+
+        for input in array:
+            field = Field(index=input[0], value=input[1])
+            field.save()
+            new_listing.listing.add(field)
+            new_listing.save()
+        
+        session.listings.add(new_listing)
+        session.save()
 
     return JsonResponse({"message":"success"})
 

@@ -42,7 +42,7 @@
             <option>Used</option>
         </select>
 
-        <label for="photos">*Photos <a href="https://imgur.com/" target="_blank">(upload and copy url) </a>
+        <label for="photos">*Photos <a href="https://dash.img.vision/" target="_blank">(upload and copy url) </a>
             <span class="glyphicon glyphicon-info-sign" data-tooltip="URL of the image to add to your listing. For best results, use an image that is in .jpg format and is at least 1000 pixels on the longest side."></span>
         </label>
         <input data-id="49" id="photos" class="input-field" type="text" value="{{ array.4 }}">
@@ -763,6 +763,8 @@
 
         {% if unique %}
         <button id="save-btn" class="btn btn-secondary" type="button" hidden>Save as Template</button>
+            <label for="copies">Amount of copies:</label>
+            <input type="number" id="copies">
             <button id="next" class="btn btn-secondary">Next Listing</button>
             <button id="finish-button" class="btn btn-primary">Finish</button>
             <button id="static-button" class="btn btn-primary" hidden>Continue</button>
@@ -772,6 +774,8 @@
             {% else %}
                 <button id="save-btn" class="btn btn-secondary" type="button" hidden>Save as Template</button>
             {% endif %}
+            <label for="copies" hidden>Amount of copies:</label>
+            <input type="number" id="copies" hidden>
             <button id="static-button" class="btn btn-primary">Continue</button>
             <button id="next" class="btn btn-secondary" hidden>Next Listing</button>
             <button id="finish-button" class="btn btn-primary" hidden>Finish</button>
