@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/75cd296e-d8fb-4f19-abe0-b64805681f7b/AppServices/subscriptions/75cd296e-d8fb-4f19-abe0-b64805681f7b/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/ebay-tool-karamurzin",
+    "appService.deploySubpath": "."
+}

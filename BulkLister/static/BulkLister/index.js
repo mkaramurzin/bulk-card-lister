@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 let newElement = document.createElement('input');
                 newElement.type = 'text';
                 newElement.id = selected.id;
+                newElement.dataset.id = selected.dataset.id;
                 newElement.className = selected.className;
 
                 selected.replaceWith(newElement);
@@ -175,12 +176,10 @@ document.addEventListener('DOMContentLoaded', function() {
             body: JSON.stringify({
                 array: array,
                 session_id: document.querySelector('#session-id').value,
-                copies: document.querySelector("#copies").value
             })
         })
         .then(response => response.json())
         .then(result => {
-            // document.querySelector('#session-id').value = result.id;
             let id = document.querySelector('#session-id').value;
             location.href = `download/${id}`;
         })
@@ -204,7 +203,6 @@ document.addEventListener('DOMContentLoaded', function() {
             body: JSON.stringify({
                 array: array,
                 session_id: document.querySelector('#session-id').value,
-                copies: document.querySelector("#copies").value
             })
         })
         .then(response => response.json())

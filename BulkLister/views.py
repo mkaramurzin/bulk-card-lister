@@ -119,21 +119,19 @@ def finish(request):
     data = json.loads(request.body)
     array = data.get("array")
     session_id = data.get("session_id", "")
-    copies = data.get("copies", "")
+
     session = Session.objects.get(id=session_id)
+    new_listing = ListingInfo()
+    new_listing.save()
 
-    for i in range(int(copies)):
-        new_listing = ListingInfo()
+    for input in array:
+        field = Field(index=input[0], value=input[1])
+        field.save()
+        new_listing.listing.add(field)
         new_listing.save()
-
-        for input in array:
-            field = Field(index=input[0], value=input[1])
-            field.save()
-            new_listing.listing.add(field)
-            new_listing.save()
-        
-        session.listings.add(new_listing)
-        session.save()
+    
+    session.listings.add(new_listing)
+    session.save()
 
     return JsonResponse({"message":"success"})
 
@@ -153,7 +151,8 @@ def download(request, id):
         session.csv_dir = "ebay-lisitng-"+str(dt_string)+".csv"
         session.save()
         template = "listing-template/CCG.csv"
-        filename = "download/" + session.csv_dir
+        filename = session.csv_dir
+
 
         with open(template, 'rt', encoding="utf8", newline='') as temp, open(filename, "wt", encoding="utf8", newline='') as file:
             writer = csv.writer(file)
@@ -182,7 +181,7 @@ def file(request, id):
 
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-    with open(os.path.join(base_dir + '/download/', filename), 'rt', encoding='utf-8', newline='') as f:
+    with open(os.path.join(base_dir, filename), 'rt', encoding='utf-8', newline='') as f:
         data = f.read()
 
     response = HttpResponse(data)

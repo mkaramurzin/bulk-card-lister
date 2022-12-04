@@ -11,6 +11,8 @@ To make the program intuitive to the extent I needed it to be, I had to switch t
 
 The tool is highly specialized for the use of me and my partner, but otherwise I consider it to be a valid solution and we are probably the only people that would use it anyways. I'll admit couldn't solve the problem entirely in the dynamic fashion that the first approach had in mind but I'll gladly settle for a proof of concept that solves a personal problem. 
 
+# Hosted with Azure
+https://ebay-tool-karamurzin.azurewebsites.net/
 
 # How to run
  1. Git clone the repository
